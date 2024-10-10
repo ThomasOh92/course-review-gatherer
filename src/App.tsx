@@ -1,10 +1,10 @@
 import * as React from 'react';
-import HomePage from './components/homepage';
+import Blog from './components/mui-blog-template/Blog';
 
 const App: React.FC = () => {
   return (
     <div>
-      <HomePage />
+      <Blog />
     </div>
   );
 };
