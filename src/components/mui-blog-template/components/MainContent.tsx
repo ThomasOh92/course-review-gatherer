@@ -4,7 +4,6 @@ import AvatarGroup from '@mui/material/AvatarGroup';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import Chip from '@mui/material/Chip';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
@@ -13,7 +12,6 @@ import InputAdornment from '@mui/material/InputAdornment';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import { styled } from '@mui/material/styles';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
-import RssFeedRoundedIcon from '@mui/icons-material/RssFeedRounded';
 
 const cardData = [
   {
@@ -72,7 +70,7 @@ const cardData = [
   },
 ];
 
-const SyledCard = styled(Card)(({ theme }) => ({
+const StyledCard = styled(Card)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   padding: 0,
@@ -89,7 +87,7 @@ const SyledCard = styled(Card)(({ theme }) => ({
   },
 }));
 
-const SyledCardContent = styled(CardContent)({
+const StyledCardContent = styled(CardContent)({
   display: 'flex',
   flexDirection: 'column',
   gap: 4,
@@ -181,7 +179,7 @@ export default function MainContent() {
   };
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4, alignItems: 'center' }}>
       <div>
         <Typography variant="h1" gutterBottom>
           Course Review Consolidator
@@ -248,23 +246,21 @@ export default function MainContent() {
           }}
         >
           <Search />
-
         </Box>
       </Box>
-      <Grid container spacing={2} columns={12}>
         <Grid xs={12} md={6}>
           <Box
-            sx={{ display: 'flex', flexDirection: 'column', gap: 2, height: '100%' }}
+            sx={{ display: 'flex', flexDirection: 'column', gap: 4, height: '100%', alignItems: 'center' }}
           >
-            <SyledCard
+            <StyledCard
               variant="outlined"
               onFocus={() => handleFocus(3)}
               onBlur={handleBlur}
               tabIndex={0}
               className={focusedCardIndex === 3 ? 'Mui-focused' : ''}
-              sx={{ height: '100%' }}
+              sx={{ height: '100%', maxWidth: 700 }}
             >
-              <SyledCardContent
+              <StyledCardContent
                 sx={{
                   display: 'flex',
                   flexDirection: 'column',
@@ -287,18 +283,18 @@ export default function MainContent() {
                     {cardData[3].description}
                   </StyledTypography>
                 </div>
-              </SyledCardContent>
+              </StyledCardContent>
               <Author authors={cardData[3].authors} />
-            </SyledCard>
-            <SyledCard
+            </StyledCard>
+            <StyledCard
               variant="outlined"
               onFocus={() => handleFocus(4)}
               onBlur={handleBlur}
               tabIndex={0}
               className={focusedCardIndex === 4 ? 'Mui-focused' : ''}
-              sx={{ height: '100%' }}
+              sx={{ height: '100%', maxWidth: 700 }}
             >
-              <SyledCardContent
+              <StyledCardContent
                 sx={{
                   display: 'flex',
                   flexDirection: 'column',
@@ -321,12 +317,11 @@ export default function MainContent() {
                     {cardData[4].description}
                   </StyledTypography>
                 </div>
-              </SyledCardContent>
+              </StyledCardContent>
               <Author authors={cardData[4].authors} />
-            </SyledCard>
+            </StyledCard>
           </Box>
         </Grid>
-      </Grid>
     </Box>
   );
 }
