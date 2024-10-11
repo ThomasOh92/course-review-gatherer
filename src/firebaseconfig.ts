@@ -25,21 +25,9 @@ initializeFirestore(app, {
 const db = getFirestore(app);
 
 // Connect to Firestore Emulator in development environment only
-// if (location.hostname === '127.0.0.1') {
-//     // Assuming your Firestore emulator is running on the default port
-//     connectFirestoreEmulator(db, '127.0.0.1', 8080);
-//   }
-
-addDoc(collection(db, "users"), {
-  first: "Ada",
-  last: "Lovelace",
-  born: 1815
-})
-.then((docRef) => {
-  console.log("Document written with ID: ", docRef.id);
-})
-.catch((error) => {
-  console.error("Error adding document: ", error);
-});
+if (location.hostname === '127.0.0.1') {
+    // Assuming your Firestore emulator is running on the default port
+    connectFirestoreEmulator(db, '127.0.0.1', 8080);
+  }
 
 export { db };

@@ -12,6 +12,8 @@ import InputAdornment from '@mui/material/InputAdornment';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import { styled } from '@mui/material/styles';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
+import { addData, readData } from '../../../firestoreUtils'; // Adjust the path as necessary
+import { Button } from '@mui/material';
 
 const cardData = [
   {
@@ -178,9 +180,16 @@ export default function MainContent() {
     console.info('You clicked the filter chip.');
   };
 
+  const handleAddData = async () => {
+    await addData('testCollection', { testField: 'testValue' });
+  };
+
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4, alignItems: 'center' }}>
       <div>
+        <Button variant="contained" color="primary" onClick={handleAddData}>
+          Firestore Add Test Data
+        </Button>
         <Typography variant="h1" gutterBottom>
           Course Review Consolidator
         </Typography>
