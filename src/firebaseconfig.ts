@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { initializeFirestore, getFirestore, connectFirestoreEmulator } from "firebase/firestore";
+import { initializeFirestore, getFirestore, connectFirestoreEmulator, collection, addDoc } from "firebase/firestore";
 
 // TODO: Replace the following with your app's Firebase project configuration
 // See: https://support.google.com/firebase/answer/7015592
@@ -25,9 +25,21 @@ initializeFirestore(app, {
 const db = getFirestore(app);
 
 // Connect to Firestore Emulator in development environment only
-if (location.hostname === '127.0.0.1') {
-    // Assuming your Firestore emulator is running on the default port
-    connectFirestoreEmulator(db, '127.0.0.1', 8080);
-  }
+// if (location.hostname === '127.0.0.1') {
+//     // Assuming your Firestore emulator is running on the default port
+//     connectFirestoreEmulator(db, '127.0.0.1', 8080);
+//   }
+
+addDoc(collection(db, "users"), {
+  first: "Ada",
+  last: "Lovelace",
+  born: 1815
+})
+.then((docRef) => {
+  console.log("Document written with ID: ", docRef.id);
+})
+.catch((error) => {
+  console.error("Error adding document: ", error);
+});
 
 export { db };
