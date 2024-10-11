@@ -187,9 +187,6 @@ export default function MainContent() {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4, alignItems: 'center' }}>
       <div>
-        <Button variant="contained" color="primary" onClick={handleAddData}>
-          Firestore Add Test Data
-        </Button>
         <Typography variant="h1" gutterBottom>
           Course Review Consolidator
         </Typography>
@@ -225,6 +222,9 @@ export default function MainContent() {
             overflow: 'auto',
           }}
         >
+          <Button variant="contained" color="primary" onClick={handleAddData}>
+            Firestore Add Test Data
+          </Button>
           <Chip onClick={handleClick} size="medium" label="All categories" />
           <Chip
             onClick={handleClick}
