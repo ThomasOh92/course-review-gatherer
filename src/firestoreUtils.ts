@@ -12,6 +12,6 @@ export async function addData(collectionName: string, data: any) {
 
 export async function readData(collectionName: string) {
   const querySnapshot = await getDocs(collection(db, collectionName));
-  const data = querySnapshot.docs.map(doc => doc.data());
-  return data;
+  // const data = querySnapshot.docs.map(doc => doc.data());
+  return querySnapshot;
 }

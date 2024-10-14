@@ -12,8 +12,12 @@ import InputAdornment from '@mui/material/InputAdornment';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import { styled } from '@mui/material/styles';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
-import { addData, readData } from '../../../firestoreUtils'; // Adjust the path as necessary
+// import { addData, readData } from '../../../firestoreUtils'; 
 import { Button } from '@mui/material';
+import { useState, useEffect } from 'react';
+import { collection, doc, addDoc, getDoc, getDocs, query } from 'firebase/firestore';
+import { db } from '../../../firebaseconfig';
+
 
 const cardData = [
   {
@@ -164,6 +168,28 @@ export function Search() {
 }
 
 export default function MainContent() {
+  const [cs50Data, setCS50Data] = useState<any>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const docRef = doc(db, "summarizedReviews", "CS50");
+        const cs50doc = await getDoc(docRef);
+        if (cs50doc.exists()) {
+          console.log("Document data:", cs50doc.data());
+          setCS50Data(cs50doc.data());
+        } else {
+          console.log("No such document!");
+        }
+      } catch (error) {
+        console.error('Error fetching data: ', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  
   const [focusedCardIndex, setFocusedCardIndex] = React.useState<number | null>(
     null,
   );
@@ -180,9 +206,9 @@ export default function MainContent() {
     console.info('You clicked the filter chip.');
   };
 
-  const handleAddData = async () => {
-    await addData('testCollection', { testField: 'testValue' });
-  };
+  // const handleAddData = async () => {
+  //   await addData('testCollection', { testField: 'testValue' });
+  // };
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4, alignItems: 'center' }}>
@@ -222,9 +248,9 @@ export default function MainContent() {
             overflow: 'auto',
           }}
         >
-          <Button variant="contained" color="primary" onClick={handleAddData}>
+          {/* <Button variant="contained" color="primary" onClick={handleAddData}>
             Firestore Add Test Data
-          </Button>
+          </Button> */}
           <Chip onClick={handleClick} size="medium" label="All categories" />
           <Chip
             onClick={handleClick}
@@ -279,10 +305,10 @@ export default function MainContent() {
               >
                 <div>
                   <Typography gutterBottom variant="caption" component="div">
-                    {cardData[3].tag}
+                    {cs50Data.title}
                   </Typography>
                   <Typography gutterBottom variant="h6" component="div">
-                    {cardData[3].title}
+                    {cs50Data.title}
                   </Typography>
                   <StyledTypography
                     variant="body2"
