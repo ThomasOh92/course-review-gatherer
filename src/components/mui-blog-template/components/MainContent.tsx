@@ -177,7 +177,7 @@ export default function MainContent() {
         const cs50doc = await getDoc(docRef);
         if (cs50doc.exists()) {
           console.log("Document data:", cs50doc.data());
-          setCS50Data(cs50doc.data());
+          setCS50Data(cs50doc);
         } else {
           console.log("No such document!");
         }
@@ -305,10 +305,10 @@ export default function MainContent() {
               >
                 <div>
                   <Typography gutterBottom variant="caption" component="div">
-                    {cs50Data ? cs50Data.title : 'Loading...'}
+                    {cs50Data && cs50Data.title ? cs50Data.title : 'Loading...'}
                   </Typography>
                   <Typography gutterBottom variant="h6" component="div">
-                    {cs50Data ? cs50Data.title : 'Loading...'}
+                    {cs50Data && cs50Data.title ? cs50Data.title : 'Loading...'}
                   </Typography>
                   <StyledTypography
                     variant="body2"
