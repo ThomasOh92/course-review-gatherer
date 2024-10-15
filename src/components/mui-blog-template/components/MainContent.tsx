@@ -305,10 +305,10 @@ export default function MainContent() {
               >
                 <div>
                   <Typography gutterBottom variant="caption" component="div">
-                    {cs50Data && cs50Data.Title ? cs50Data.Title : 'Loading...'}
+                    {cs50Data? cs50Data.data()?.Title : 'Loading...'}
                   </Typography>
                   <Typography gutterBottom variant="h6" component="div">
-                    {cs50Data && cs50Data.Title ? cs50Data.Title : 'Loading...'}
+                    {cs50Data? cs50Data.data()?.Title : 'Loading...'}
                   </Typography>
                   <StyledTypography
                     variant="body2"

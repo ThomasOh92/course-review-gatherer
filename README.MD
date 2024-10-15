@@ -5,3 +5,6 @@
 - Next step: Create proper database and start pulling data from there to populate cards
 - Create one entry for CS50 first
 - Have created one document for CS50 - currently tweaking the code so it actually pulls and reads
+- Having trouble pulling data into the frontend
+
+- Need to consider using emulator suite to test faster
