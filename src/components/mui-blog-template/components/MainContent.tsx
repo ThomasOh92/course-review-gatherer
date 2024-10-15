@@ -302,14 +302,14 @@ export default function MainContent() {
                     Programming
                   </Typography>
                   <Typography gutterBottom variant="h6" component="div">
-                    {cs50Data ? cs50Data.data()?.Title : 'Loading...'}
+                    {cs50Data? cs50Data.data()?.Title : 'Loading...'}
                   </Typography>
                   <StyledTypography
                     variant="body2"
                     color="text.secondary"
                     gutterBottom
                   >
-                    {cs50Data ? cs50Data.data()?.["Summarized Review"] : 'Loading...'}
+                    {cs50Data? cs50Data.data()?.["Summarized Review"] : 'Loading...'}
                     </StyledTypography>
                 </div>
               </StyledCardContent>
