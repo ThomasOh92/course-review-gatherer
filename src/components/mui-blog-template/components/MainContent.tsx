@@ -219,17 +219,6 @@ export default function MainContent() {
       </div>
       <Box
         sx={{
-          display: { xs: 'flex', sm: 'none' },
-          flexDirection: 'row',
-          gap: 1,
-          width: { xs: '100%', md: 'fit-content' },
-          overflow: 'auto',
-        }}
-      >
-        <Search />
-      </Box>
-      <Box
-        sx={{
           display: 'flex',
           flexDirection: { xs: 'column-reverse', md: 'row' },
           width: '100%',
@@ -239,7 +228,7 @@ export default function MainContent() {
           overflow: 'auto',
         }}
       >
-        <Box
+        {/* <Box
           sx={{
             display: 'inline-flex',
             flexDirection: 'row',
@@ -247,9 +236,6 @@ export default function MainContent() {
             overflow: 'auto',
           }}
         >
-          {/* <Button variant="contained" color="primary" onClick={handleAddData}>
-            Firestore Add Test Data
-          </Button> */}
           <Chip onClick={handleClick} size="medium" label="All categories" />
           <Chip
             onClick={handleClick}
@@ -269,14 +255,12 @@ export default function MainContent() {
               border: 'none',
             }}
           />
-        </Box>
+        </Box> */}
         <Box
           sx={{
-            display: { xs: 'none', sm: 'flex' },
-            flexDirection: 'row',
-            gap: 1,
-            width: { xs: '100%', md: 'fit-content' },
-            overflow: 'auto',
+            display: 'flex',
+            justifyContent: 'center',
+            width: '100%',
           }}
         >
           <Search />
@@ -303,9 +287,9 @@ export default function MainContent() {
                 }}
               >
                 <div>
-                  <Typography gutterBottom variant="caption" component="div">
+                  {/* <Typography gutterBottom variant="caption" component="div">
                     Programming
-                  </Typography>
+                  </Typography> */}
                   <Typography gutterBottom variant="h6" component="div">
                     {cs50Data? cs50Data.data()?.Title : 'Loading...'}
                   </Typography>
