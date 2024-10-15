@@ -1,10 +1,7 @@
-# Current Situation
-- Utils function works well to add Data - should be able to read data as well
+# Key Notes
 - Note - firestore database in test mode - 30 days till expiry (11 Nov), then permissions must be manually configured
-
-- Next step: Create proper database and start pulling data from there to populate cards
-- Create one entry for CS50 first
-- Have created one document for CS50 - currently tweaking the code so it actually pulls and reads
-- Having trouble pulling data into the frontend
-
 - Need to consider using emulator suite to test faster
+
+# Next Steps
+- Design the card nicely and populate will real data - exactly what you want
+
