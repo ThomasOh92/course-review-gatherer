@@ -175,6 +175,11 @@ export default function MainContent() {
       try {
         const docRef = doc(db, "summarizedReviews", "CS50");
         const cs50doc = await getDoc(docRef);
+        if (cs50doc.exists()) {
+          setCS50Data(cs50doc);
+        } else {
+          console.log("No such document!");
+        }
       } catch (error) {
         console.error('Error fetching data: ', error);
       }
@@ -310,7 +315,7 @@ export default function MainContent() {
                     gutterBottom
                   >
                     {cs50Data? cs50Data.data()?.["Summarized Review"] : 'Loading...'}
-                    </StyledTypography>
+                  </StyledTypography>
                 </div>
               </StyledCardContent>
               <Author authors={cardData[3].authors} />
