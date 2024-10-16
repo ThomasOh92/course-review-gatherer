@@ -259,7 +259,7 @@ export default function MainContent() {
                       variant="body2"
                       color="text.secondary"
                       gutterBottom
-                      sx={{ display: 'block', overflow: 'visible', WebkitLineClamp: 'unset', mt: 2 }}
+                      sx={{ display: 'block', overflow: 'visible', WebkitLineClamp: 'unset', mt: 1, mb: 1 }}
                     >
                       {cs50Data ? cs50Data.data()?.["Summarized Review"] : 'Loading...'}
                     </StyledTypography>
