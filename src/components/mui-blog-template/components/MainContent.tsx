@@ -17,64 +17,11 @@ import { Button } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { collection, doc, addDoc, getDoc, getDocs, query } from 'firebase/firestore';
 import { db } from '../../../firebaseconfig';
-
-
-const cardData = [
-  {
-    img: 'https://picsum.photos/800/450?random=1',
-    tag: 'Engineering',
-    title: 'Revolutionizing software development with cutting-edge tools',
-    description:
-      'Our latest engineering tools are designed to streamline workflows and boost productivity. Discover how these innovations are transforming the software development landscape.',
-    authors: [
-      { name: 'Remy Sharp', avatar: '/static/images/avatar/1.jpg' },
-      { name: 'Travis Howard', avatar: '/static/images/avatar/2.jpg' },
-    ],
-  },
-  {
-    img: 'https://picsum.photos/800/450?random=2',
-    tag: 'Product',
-    title: 'Innovative product features that drive success',
-    description:
-      'Explore the key features of our latest product release that are helping businesses achieve their goals. From user-friendly interfaces to robust functionality, learn why our product stands out.',
-    authors: [{ name: 'Erica Johns', avatar: '/static/images/avatar/6.jpg' }],
-  },
-  {
-    img: 'https://picsum.photos/800/450?random=3',
-    tag: 'Design',
-    title: 'Designing for the future: trends and insights',
-    description:
-      'Stay ahead of the curve with the latest design trends and insights. Our design team shares their expertise on creating intuitive and visually stunning user experiences.',
-    authors: [{ name: 'Kate Morrison', avatar: '/static/images/avatar/7.jpg' }],
-  },
-  {
-    img: 'https://picsum.photos/800/450?random=4',
-    tag: 'Company',
-    title: "Our company's journey: milestones and achievements",
-    description:
-      "Take a look at our company's journey and the milestones we've achieved along the way. From humble beginnings to industry leader, discover our story of growth and success.",
-    authors: [{ name: 'Cindy Baker', avatar: '/static/images/avatar/3.jpg' }],
-  },
-  {
-    img: 'https://picsum.photos/800/450?random=45',
-    tag: 'Engineering',
-    title: 'Pioneering sustainable engineering solutions',
-    description:
-      "Learn about our commitment to sustainability and the innovative engineering solutions we're implementing to create a greener future. Discover the impact of our eco-friendly initiatives.",
-    authors: [
-      { name: 'Agnes Walker', avatar: '/static/images/avatar/4.jpg' },
-      { name: 'Trevor Henderson', avatar: '/static/images/avatar/5.jpg' },
-    ],
-  },
-  {
-    img: 'https://picsum.photos/800/450?random=6',
-    tag: 'Product',
-    title: 'Maximizing efficiency with our latest product updates',
-    description:
-      'Our recent product updates are designed to help you maximize efficiency and achieve more. Get a detailed overview of the new features and improvements that can elevate your workflow.',
-    authors: [{ name: 'Travis Howard', avatar: '/static/images/avatar/2.jpg' }],
-  },
-];
+import Accordion from '@mui/material/Accordion';
+import AccordionActions from '@mui/material/AccordionActions';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const StyledCard = styled(Card)(({ theme }) => ({
   display: 'flex',
@@ -211,11 +158,12 @@ export default function MainContent() {
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4, alignItems: 'center' }}>
-      <div>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <Typography variant="h1" gutterBottom>
-          Course Review Consolidator
+          Hidden Reviews for Online Courses
         </Typography>
-        <Typography>Summarising reviews of the most popular courses from Reddit, Youtube Comments and other unique sources</Typography>
+        <Typography>Get a fuller picture with reviews from Youtube Comments, Reddit and more</Typography>
+        <Typography>We use sources not easily scraped by Google, Perplexity and ChatGPT Plus</Typography>
       </div>
       <Box
         sx={{
@@ -293,50 +241,29 @@ export default function MainContent() {
                   <Typography gutterBottom variant="h6" component="div">
                     {cs50Data? cs50Data.data()?.Title : 'Loading...'}
                   </Typography>
-                  <StyledTypography
+                    <StyledTypography gutterBottom>
+                      Need something here that makes the LLM summary more useful (learning good? Employability good?, etc)
+                    </StyledTypography>
+                    <StyledTypography
                     variant="body2"
                     color="text.secondary"
                     gutterBottom
-                  >
-                    {cs50Data? cs50Data.data()?.["Summarized Review"] : 'Loading...'}
-                  </StyledTypography>
+                    sx={{ display: 'block', overflow: 'visible', WebkitLineClamp: 'unset' }}
+                    >
+                    {cs50Data ? cs50Data.data()?.["Summarized Review"] : 'Loading...'}
+                    </StyledTypography>
+                    <Accordion>
+                    <AccordionSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel1-content"
+                        id="panel1-header"
+                      >
+                        Sources: 10 reddit threads, 1062 youtube comments and 452 Class Central Reviews
+                      </AccordionSummary>
+                    </Accordion>
+
                 </div>
               </StyledCardContent>
-              <Author authors={cardData[3].authors} />
-            </StyledCard>
-            <StyledCard
-              variant="outlined"
-              onFocus={() => handleFocus(4)}
-              onBlur={handleBlur}
-              tabIndex={0}
-              className={focusedCardIndex === 4 ? 'Mui-focused' : ''}
-              sx={{ height: '100%', maxWidth: 700 }}
-            >
-              <StyledCardContent
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  height: '100%',
-                }}
-              >
-                <div>
-                  <Typography gutterBottom variant="caption" component="div">
-                    {cardData[4].tag}
-                  </Typography>
-                  <Typography gutterBottom variant="h6" component="div">
-                    {cardData[4].title}
-                  </Typography>
-                  <StyledTypography
-                    variant="body2"
-                    color="text.secondary"
-                    gutterBottom
-                  >
-                    {cardData[4].description}
-                  </StyledTypography>
-                </div>
-              </StyledCardContent>
-              <Author authors={cardData[4].authors} />
             </StyledCard>
           </Box>
         </Grid>
