@@ -258,8 +258,15 @@ export default function MainContent() {
                         aria-controls="panel1-content"
                         id="panel1-header"
                       >
-                        Sources: 10 reddit threads, 1062 youtube comments and 452 Class Central Reviews
+                        Analysed from 10 reddit threads, 1062 youtube comments and 452 Class Central Reviews
                       </AccordionSummary>
+                      <AccordionDetails>
+                        Reddit Threads: Link 1, Link2, Link3...
+                        <br />
+                        Youtube Comments: Video 1, Video 2, Video 3...
+                        <br />
+                        Class Central: Link 1
+                      </AccordionDetails>
                     </Accordion>
 
                 </div>
