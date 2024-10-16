@@ -22,6 +22,9 @@ import AccordionActions from '@mui/material/AccordionActions';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
 
 const StyledCard = styled(Card)(({ theme }) => ({
   display: 'flex',
@@ -238,19 +241,27 @@ export default function MainContent() {
                   {/* <Typography gutterBottom variant="caption" component="div">
                     Programming
                   </Typography> */}
-                  <Typography gutterBottom variant="h6" component="div">
+                  <Typography  variant="h6" component="div">
                     {cs50Data? cs50Data.data()?.Title : 'Loading...'}
                   </Typography>
-                    <StyledTypography gutterBottom>
-                      Need something here that makes the LLM summary more useful (learning good? Employability good?, etc)
-                    </StyledTypography>
+                    <List sx={{ padding: 0, margin: 0 }}>
+                      <ListItem sx={{ padding: 0, margin: 0 }}>
+                      <ListItemText primary="• Engaging but challenging" />
+                      </ListItem>
+                      <ListItem sx={{ padding: 0, margin: 0 }}>
+                      <ListItemText primary="• Foundational for learning computer science" />
+                      </ListItem>
+                      <ListItem sx={{ padding: 0, margin: 0 }}>
+                      <ListItemText primary="• Employability benefits are not immediate" />
+                      </ListItem>
+                    </List>
                     <StyledTypography
-                    variant="body2"
-                    color="text.secondary"
-                    gutterBottom
-                    sx={{ display: 'block', overflow: 'visible', WebkitLineClamp: 'unset' }}
+                      variant="body2"
+                      color="text.secondary"
+                      gutterBottom
+                      sx={{ display: 'block', overflow: 'visible', WebkitLineClamp: 'unset', mt: 2 }}
                     >
-                    {cs50Data ? cs50Data.data()?.["Summarized Review"] : 'Loading...'}
+                      {cs50Data ? cs50Data.data()?.["Summarized Review"] : 'Loading...'}
                     </StyledTypography>
                     <Accordion>
                     <AccordionSummary
