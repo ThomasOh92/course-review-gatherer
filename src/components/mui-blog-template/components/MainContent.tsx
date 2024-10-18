@@ -4,6 +4,7 @@ import AvatarGroup from '@mui/material/AvatarGroup';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
 import Chip from '@mui/material/Chip';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
@@ -25,6 +26,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
+import Link from '@mui/material/Link';
 
 const StyledCard = styled(Card)(({ theme }) => ({
   display: 'flex',
@@ -241,9 +243,9 @@ export default function MainContent() {
                   {/* <Typography gutterBottom variant="caption" component="div">
                     Programming
                   </Typography> */}
-                  <Typography  variant="h6" component="div">
-                    {cs50Data? cs50Data.data()?.Title : 'Loading...'}
-                  </Typography>
+                    <Typography variant="h6" component="div">
+                      {cs50Data ? cs50Data.data()?.Title : 'Loading...'}
+                    </Typography>
                     <List sx={{ padding: 0, margin: 0 }}>
                       <ListItem sx={{ padding: 0, margin: 0 }}>
                       <ListItemText primary="• Engaging but challenging" />
@@ -272,15 +274,17 @@ export default function MainContent() {
                         Analysed from 10 reddit threads, 1062 youtube comments and 452 Class Central Reviews
                       </AccordionSummary>
                       <AccordionDetails>
-                        Reddit Threads: Link 1, Link2, Link3...
-                        <br />
-                        Youtube Comments: Video 1, Video 2, Video 3...
-                        <br />
-                        Class Central: Link 1
+                        Links to sources to be provided soon...
                       </AccordionDetails>
                     </Accordion>
-
                 </div>
+                <Link 
+                    sx={{ display: 'block', overflow: 'visible', WebkitLineClamp: 'unset', mt: 1, mb: 1, color: 'primary.main'}}
+                    href={cs50Data ? cs50Data.data()?.Link : 'Loading...'} 
+                    target='_blank'
+                    >
+                    Link to Course
+                  </Link>
               </StyledCardContent>
             </StyledCard>
           </Box>
