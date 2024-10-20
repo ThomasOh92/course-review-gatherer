@@ -121,16 +121,20 @@ export function Search() {
 
 export default function MainContent() {
   const [cs50Data, setCS50Data] = useState<any>(null);
+  const [googleAIEssentialsData, setGoogleAIEssentialsData] = useState<any>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const docRef = doc(db, "summarizedReviews", "CS50");
-        const cs50doc = await getDoc(docRef);
+        const cs50DocRef = doc(db, "summarizedReviews", "CS50");
+        const googleAIDocRef = doc(db, "summarizedReviews", "Google AI Essentials");
+        const cs50doc = await getDoc(cs50DocRef);
+        const googleAIdoc = await getDoc(googleAIDocRef);
         if (cs50doc.exists()) {
           setCS50Data(cs50doc);
-        } else {
-          console.log("No such document!");
+        } 
+        if (googleAIdoc.exists()) {
+          setGoogleAIEssentialsData(googleAIdoc);
         }
       } catch (error) {
         console.error('Error fetching data: ', error);
@@ -281,6 +285,70 @@ export default function MainContent() {
                 <Link 
                     sx={{ display: 'block', overflow: 'visible', WebkitLineClamp: 'unset', mt: 1, mb: 1, color: 'primary.main'}}
                     href={cs50Data ? cs50Data.data()?.Link : 'Loading...'} 
+                    target='_blank'
+                    >
+                    Link to Course
+                  </Link>
+              </StyledCardContent>
+            </StyledCard>
+            <StyledCard
+              variant="outlined"
+              onFocus={() => handleFocus(3)}
+              onBlur={handleBlur}
+              tabIndex={0}
+              className={focusedCardIndex === 3 ? 'Mui-focused' : ''}
+              sx={{ height: '100%', maxWidth: 700 }}
+            >
+              <StyledCardContent
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  height: '100%',
+                }}
+              >
+                <div>
+                  {/* <Typography gutterBottom variant="caption" component="div">
+                    Programming
+                  </Typography> */}
+                    <Typography variant="h6" component="div">
+                      {googleAIEssentialsData ? googleAIEssentialsData.data()?.Title : 'Loading...'}
+                    </Typography>
+                    <List sx={{ padding: 0, margin: 0 }}>
+                      <ListItem sx={{ padding: 0, margin: 0 }}>
+                      <ListItemText primary="• Beginner-friendly, no technical experience required" />
+                      </ListItem>
+                      <ListItem sx={{ padding: 0, margin: 0 }}>
+                      <ListItemText primary="• Focuses on practical AI applications in the workplace" />
+                      </ListItem>
+                      <ListItem sx={{ padding: 0, margin: 0 }}>
+                      <ListItemText primary="• Employability benefits not clear" />
+                      </ListItem>
+                    </List>
+                    <StyledTypography
+                      variant="body2"
+                      color="text.secondary"
+                      gutterBottom
+                      sx={{ display: 'block', overflow: 'visible', WebkitLineClamp: 'unset', mt: 1, mb: 1 }}
+                    >
+                      {googleAIEssentialsData ? googleAIEssentialsData.data()?.["Summarized Review"] : 'Loading...'}
+                    </StyledTypography>
+                    <Accordion>
+                    <AccordionSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel1-content"
+                        id="panel1-header"
+                      >
+                        Analysed from 3 reddit threads, 2 youtube videos and 200 youtube comments
+                      </AccordionSummary>
+                      <AccordionDetails>
+                        Links to sources to be provided soon...
+                      </AccordionDetails>
+                    </Accordion>
+                </div>
+                <Link 
+                    sx={{ display: 'block', overflow: 'visible', WebkitLineClamp: 'unset', mt: 1, mb: 1, color: 'primary.main'}}
+                    href={googleAIEssentialsData ? googleAIEssentialsData.data()?.Link : 'Loading...'} 
                     target='_blank'
                     >
                     Link to Course

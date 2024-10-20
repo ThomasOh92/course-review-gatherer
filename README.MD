@@ -4,10 +4,8 @@
 - Use Edge for light mode viewing - can be quite jarring
 
 # Next Steps - Get in front of people by 21 October
-- How many cards do you want before buying the domain and moving ahead? 3-4
-- Add link to titles
+- Do 2 more cards - hardcoded is ok
 - Redo the subtitle area - explain the current research approach
 - Add a form to request 
 - Clean up footer
-- Clean up light mode
 
