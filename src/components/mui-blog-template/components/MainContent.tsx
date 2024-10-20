@@ -122,13 +122,15 @@ export function Search() {
 export default function MainContent() {
   const [cs50Data, setCS50Data] = useState<any>(null);
   const [googleAIEssentialsData, setGoogleAIEssentialsData] = useState<any>(null);
+  const [GenAINanoDegreeUdacityData, setGenAINanoDegreeUdacityData] = useState<any>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
       const docRefs = [
         { ref: doc(db, "summarizedReviews", "CS50"), setter: setCS50Data },
-        { ref: doc(db, "summarizedReviews", "GoogleAIEssentials"), setter: setGoogleAIEssentialsData }
+        { ref: doc(db, "summarizedReviews", "GoogleAIEssentials"), setter: setGoogleAIEssentialsData },
+        { ref: doc(db, "summarizedReviews", "GenAINanoDegreeUdacity"), setter: setGenAINanoDegreeUdacityData }
       ];
 
       const fetchDocs = docRefs.map(async ({ ref, setter }) => {
@@ -352,6 +354,70 @@ export default function MainContent() {
                 <Link 
                     sx={{ display: 'block', overflow: 'visible', WebkitLineClamp: 'unset', mt: 1, mb: 1, color: 'primary.main'}}
                     href={googleAIEssentialsData ? googleAIEssentialsData.data()?.Link : 'Loading...'} 
+                    target='_blank'
+                    >
+                    Link to Course
+                  </Link>
+              </StyledCardContent>
+            </StyledCard>
+            <StyledCard
+              variant="outlined"
+              onFocus={() => handleFocus(3)}
+              onBlur={handleBlur}
+              tabIndex={0}
+              className={focusedCardIndex === 3 ? 'Mui-focused' : ''}
+              sx={{ height: '100%', maxWidth: 700 }}
+            >
+              <StyledCardContent
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  height: '100%',
+                }}
+              >
+                <div>
+                  {/* <Typography gutterBottom variant="caption" component="div">
+                    Programming
+                  </Typography> */}
+                    <Typography variant="h6" component="div">
+                      {GenAINanoDegreeUdacityData ? GenAINanoDegreeUdacityData.data()?.Title : 'Loading...'}
+                    </Typography>
+                    <List sx={{ padding: 0, margin: 0 }}>
+                      <ListItem sx={{ padding: 0, margin: 0 }}>
+                      <ListItemText primary="• An excellent Generative AI course" />
+                      </ListItem>
+                      <ListItem sx={{ padding: 0, margin: 0 }}>
+                      <ListItemText primary="• Intermediate level; requires Python and SQL knowledge" />
+                      </ListItem>
+                      <ListItem sx={{ padding: 0, margin: 0 }}>
+                      <ListItemText primary="• Includes hands-on projects, especially for real-world tasks like image generation and chatbot creation" />
+                      </ListItem>
+                    </List>
+                    <StyledTypography
+                      variant="body2"
+                      color="text.secondary"
+                      gutterBottom
+                      sx={{ display: 'block', overflow: 'visible', WebkitLineClamp: 'unset', mt: 1, mb: 1 }}
+                    >
+                      {GenAINanoDegreeUdacityData ? GenAINanoDegreeUdacityData.data()?.["Summarized Review"] : 'Loading...'}
+                    </StyledTypography>
+                    <Accordion>
+                    <AccordionSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel1-content"
+                        id="panel1-header"
+                      >
+                        Analysed from 1 reddit threads and 157 youtube comments
+                      </AccordionSummary>
+                      <AccordionDetails>
+                        Links to sources to be provided soon...
+                      </AccordionDetails>
+                    </Accordion>
+                </div>
+                <Link 
+                    sx={{ display: 'block', overflow: 'visible', WebkitLineClamp: 'unset', mt: 1, mb: 1, color: 'primary.main'}}
+                    href={GenAINanoDegreeUdacityData ? GenAINanoDegreeUdacityData.data()?.Link : 'Loading...'} 
                     target='_blank'
                     >
                     Link to Course

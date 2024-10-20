@@ -4,8 +4,8 @@
 - Use Edge for light mode viewing - can be quite jarring
 
 # Next Steps - Get in front of people by 21 October
-- Do 2 more cards - hardcoded is ok
 - Redo the subtitle area - explain the current research approach
-- Add a form to request 
+- Add a form to request course
+- Add a form to provide feedback on research approach
 - Clean up footer
-
+- GO OUT AND GET INPUT
