@@ -126,18 +126,21 @@ export default function MainContent() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const cs50DocRef = doc(db, "summarizedReviews", "CS50");
-        const googleAIDocRef = doc(db, "summarizedReviews", "Google AI Essentials");
-        const cs50doc = await getDoc(cs50DocRef);
-        const googleAIdoc = await getDoc(googleAIDocRef);
-        if (cs50doc.exists()) {
-          setCS50Data(cs50doc);
-        } 
-        if (googleAIdoc.exists()) {
-          setGoogleAIEssentialsData(googleAIdoc);
+      const docRefs = [
+        { ref: doc(db, "summarizedReviews", "CS50"), setter: setCS50Data },
+        { ref: doc(db, "summarizedReviews", "GoogleAIEssentials"), setter: setGoogleAIEssentialsData }
+      ];
+
+      const fetchDocs = docRefs.map(async ({ ref, setter }) => {
+        const docSnap = await getDoc(ref);
+        if (docSnap.exists()) {
+        setter(docSnap);
         }
+      });
+
+      await Promise.all(fetchDocs);
       } catch (error) {
-        console.error('Error fetching data: ', error);
+      console.error('Error fetching data: ', error);
       }
     };
 
@@ -339,7 +342,7 @@ export default function MainContent() {
                         aria-controls="panel1-content"
                         id="panel1-header"
                       >
-                        Analysed from 3 reddit threads, 2 youtube videos and 200 youtube comments
+                        Analysed from 3 reddit threads, 2 youtube videos and 202 youtube comments
                       </AccordionSummary>
                       <AccordionDetails>
                         Links to sources to be provided soon...
