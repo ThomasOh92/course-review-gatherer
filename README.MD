@@ -3,9 +3,8 @@
 - Need to consider using emulator suite to test faster
 - Use Edge for light mode viewing - can be quite jarring
 
-# Next Steps - Get in front of people by 21 October
-- Redo the subtitle area - explain the current research approach
+# Next Steps - Get in front of people by 23 October
 - Add a form to request course
 - Add a form to provide feedback on research approach
-- Clean up footer
+- Clean up footer - just add email so people can reach out
 - GO OUT AND GET INPUT

@@ -27,6 +27,7 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Link from '@mui/material/Link';
+import Paper from '@mui/material/Paper';
 
 const StyledCard = styled(Card)(({ theme }) => ({
   display: 'flex',
@@ -64,39 +65,39 @@ const StyledTypography = styled(Typography)({
   textOverflow: 'ellipsis',
 });
 
-function Author({ authors }: { authors: { name: string; avatar: string }[] }) {
-  return (
-    <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'row',
-        gap: 2,
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: '16px',
-      }}
-    >
-      <Box
-        sx={{ display: 'flex', flexDirection: 'row', gap: 1, alignItems: 'center' }}
-      >
-        <AvatarGroup max={3}>
-          {authors.map((author, index) => (
-            <Avatar
-              key={index}
-              alt={author.name}
-              src={author.avatar}
-              sx={{ width: 24, height: 24 }}
-            />
-          ))}
-        </AvatarGroup>
-        <Typography variant="caption">
-          {authors.map((author) => author.name).join(', ')}
-        </Typography>
-      </Box>
-      <Typography variant="caption">July 14, 2021</Typography>
-    </Box>
-  );
-}
+// function Author({ authors }: { authors: { name: string; avatar: string }[] }) {
+//   return (
+//     <Box
+//       sx={{
+//         display: 'flex',
+//         flexDirection: 'row',
+//         gap: 2,
+//         alignItems: 'center',
+//         justifyContent: 'space-between',
+//         padding: '16px',
+//       }}
+//     >
+//       <Box
+//         sx={{ display: 'flex', flexDirection: 'row', gap: 1, alignItems: 'center' }}
+//       >
+//         <AvatarGroup max={3}>
+//           {authors.map((author, index) => (
+//             <Avatar
+//               key={index}
+//               alt={author.name}
+//               src={author.avatar}
+//               sx={{ width: 24, height: 24 }}
+//             />
+//           ))}
+//         </AvatarGroup>
+//         <Typography variant="caption">
+//           {authors.map((author) => author.name).join(', ')}
+//         </Typography>
+//       </Box>
+//       <Typography variant="caption">July 14, 2021</Typography>
+//     </Box>
+//   );
+// }
 
 export function Search() {
   return (
@@ -173,13 +174,40 @@ export default function MainContent() {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4, alignItems: 'center' }}>
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <Typography variant="h1" gutterBottom>
-          Hidden Reviews for Online Courses
-        </Typography>
-        <Typography>Get a fuller picture with reviews from Youtube Comments, Reddit and more</Typography>
-        <Typography>We use sources not easily scraped by Google, Perplexity and ChatGPT Plus</Typography>
+        <Typography variant="h1" gutterBottom> The Right Course </Typography>
+        <Typography variant="subtitle1" >Deciding whether to start an online course? We collect and analyze reviews from unique sources</Typography>
+        <Paper 
+          elevation={3} 
+          sx={{ 
+            width: '100%', 
+            maxWidth: 600, 
+            padding: 2,
+            mt: 3, 
+            display: 'flex', 
+            justifyContent: 'center', 
+            flexDirection: 'column'
+          }}
+          square
+        >
+            <Box sx={{ display: 'flex', gap: 2, flexDirection: 'row' }}>
+            <Box sx={{ padding: 1, mt: 1, flex: 1 }}>
+                <Typography sx={{mb:1}}  >
+                <strong>Sources of Info (adding more soon!) </strong>
+                </Typography>
+              <Typography variant="body2" sx={{ color: 'grey' }}>
+                Reddit Threads, Youtube Transcripts, Youtube Comments, Class Central
+              </Typography>
+            </Box>
+            <Box  sx={{ padding: 1, mt: 1, flex: 1 }}>
+              <Typography sx={{mb:1}}><strong>Main Prompt Refinements</strong></Typography>
+              <Typography variant="body2" sx={{ color: 'grey' }}>
+                Summarize reviews in 3 bullet points + a paragraph. Focus on employability benefits, difficulty level, and engagement.
+              </Typography>
+            </Box>
+            </Box>
+        </Paper>
       </div>
-      <Box
+      {/* <Box
         sx={{
           display: 'flex',
           flexDirection: { xs: 'column-reverse', md: 'row' },
@@ -190,7 +218,7 @@ export default function MainContent() {
           overflow: 'auto',
         }}
       >
-        {/* <Box
+        <Box
           sx={{
             display: 'inline-flex',
             flexDirection: 'row',
@@ -217,7 +245,7 @@ export default function MainContent() {
               border: 'none',
             }}
           />
-        </Box> */}
+        </Box>
         <Box
           sx={{
             display: 'flex',
@@ -227,7 +255,7 @@ export default function MainContent() {
         >
           <Search />
         </Box>
-      </Box>
+      </Box> */}
         <Grid xs={12} md={6}>
           <Box
             sx={{ display: 'flex', flexDirection: 'column', gap: 4, height: '100%', alignItems: 'center' }}
