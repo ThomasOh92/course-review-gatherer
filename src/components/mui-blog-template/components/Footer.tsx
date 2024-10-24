@@ -40,7 +40,7 @@ export default function Footer() {
           textAlign: { sm: 'center', md: 'left' },
         }}
       >
-        <Box
+        {/* <Box
           sx={{
             display: 'flex',
             flexDirection: { xs: 'column', sm: 'row' },
@@ -156,18 +156,28 @@ export default function Footer() {
               Contact
             </Link>
           </Box>
-        </Box>
+        </Box> */}
         <Box
           sx={{
             display: 'flex',
-            justifyContent: 'space-between',
-            pt: { xs: 4, sm: 8 },
+            justifyContent: 'align-center',
             width: '100%',
-            borderTop: '1px solid',
+            // borderTop: '1px solid',
             borderColor: 'divider',
           }}
         >
-          <div>
+            <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              width: '100%',
+            }}
+            >
+            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+              Contact me at <strong>thomohprojects@gmail.com</strong> for any inquiries!
+            </Typography>
+            </Box>
+          {/* <div>
             <Link color="text.secondary" variant="body2" href="#">
               Privacy Policy
             </Link>
@@ -178,8 +188,8 @@ export default function Footer() {
               Terms of Service
             </Link>
             <Copyright />
-          </div>
-          <Stack
+          </div> */}
+          {/* <Stack
             direction="row"
             spacing={1}
             useFlexGap
@@ -203,7 +213,7 @@ export default function Footer() {
             >
               <LinkedInIcon />
             </IconButton>
-          </Stack>
+          </Stack> */}
         </Box>
       </Container>
     </React.Fragment>

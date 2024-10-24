@@ -6,5 +6,4 @@
 # Next Steps - Get in front of people by 23 October
 - Add a form to request course
 - Add a form to provide feedback on research approach
-- Clean up footer - just add email so people can reach out
 - GO OUT AND GET INPUT
