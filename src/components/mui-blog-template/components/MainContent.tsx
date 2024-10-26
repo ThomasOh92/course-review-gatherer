@@ -174,7 +174,7 @@ export default function MainContent() {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4, alignItems: 'center' }}>
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <Typography variant="h1" gutterBottom> Online Course Review Analyzer </Typography>
+        <Typography variant="h1" gutterBottom> Course Review Gatherer </Typography>
         <Typography variant="subtitle1" >Deciding whether to start an online course? We collect and analyze reviews from unique sources</Typography>
         <Paper 
           elevation={3} 
