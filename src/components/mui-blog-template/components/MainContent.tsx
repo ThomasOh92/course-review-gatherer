@@ -174,7 +174,7 @@ export default function MainContent() {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4, alignItems: 'center' }}>
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <Typography variant="h1" gutterBottom> The Right Course </Typography>
+        <Typography variant="h1" gutterBottom> Online Course Review Analyzer </Typography>
         <Typography variant="subtitle1" >Deciding whether to start an online course? We collect and analyze reviews from unique sources</Typography>
         <Paper 
           elevation={3} 
@@ -190,20 +190,47 @@ export default function MainContent() {
           square
         >
             <Box sx={{ display: 'flex', gap: 2, flexDirection: 'row' }}>
-            <Box sx={{ padding: 1, mt: 1, flex: 1 }}>
-                <Typography sx={{mb:1}}  >
-                <strong>Sources of Info (adding more soon!) </strong>
+              <Box sx={{ padding: 1, mt: 1, flex: 1 }}>
+                  <Typography sx={{mb:1}}  >
+                  <strong>Sources of Info (adding more soon!) </strong>
+                  </Typography>
+                <Typography variant="body2" sx={{ color: 'grey' }}>
+                  Reddit Threads, Youtube Transcripts, Youtube Comments, Class Central
                 </Typography>
-              <Typography variant="body2" sx={{ color: 'grey' }}>
-                Reddit Threads, Youtube Transcripts, Youtube Comments, Class Central
-              </Typography>
+              </Box>
+              <Box  sx={{ padding: 1, mt: 1, flex: 1 }}>
+                <Typography sx={{mb:1}}><strong>Main Prompt Refinements</strong></Typography>
+                <Typography variant="body2" sx={{ color: 'grey' }}>
+                  Summarize reviews in 3 bullet points + a paragraph. Focus on employability benefits, difficulty level, and engagement.
+                </Typography>
+              </Box>
             </Box>
-            <Box  sx={{ padding: 1, mt: 1, flex: 1 }}>
-              <Typography sx={{mb:1}}><strong>Main Prompt Refinements</strong></Typography>
-              <Typography variant="body2" sx={{ color: 'grey' }}>
-                Summarize reviews in 3 bullet points + a paragraph. Focus on employability benefits, difficulty level, and engagement.
-              </Typography>
-            </Box>
+            <Box sx={{ mt: 3, textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <Typography variant="body1" gutterBottom sx={{ maxWidth: 400 }}>
+                Help us improve this site! Submit a course you would like reviewed, or provide suggestions on our research approach.
+                </Typography>
+                <Box
+                sx={{
+                  display: 'inline-block',
+                  border: '1px solid',
+                  borderColor: 'success.main',
+                  borderRadius: 1,
+                  padding: '8px 16px',
+                  textAlign: 'center',
+                  cursor: 'pointer',
+                  '&:hover': {
+                  backgroundColor: 'success.light',
+                  },
+                }}
+                >
+                <Link 
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSeUFYoCTEIF102LXtKRyzT708hFPE_dZN_Z3VZmTAPVTYkrOg/viewform" 
+                  target="_blank" 
+                  sx={{ color: 'success.main', textDecoration: 'none' }}
+                >
+                  Submit Feedback
+                </Link>
+                </Box>
             </Box>
         </Paper>
       </div>
