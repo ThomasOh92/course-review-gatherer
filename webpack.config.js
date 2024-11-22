@@ -29,6 +29,7 @@ module.exports = (env, argv) => {
     },
     devServer: {
       static: './dist',
+      historyApiFallback: true,
     },
     plugins: [
       new HtmlWebpackPlugin({
