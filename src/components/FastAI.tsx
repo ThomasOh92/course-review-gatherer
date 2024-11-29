@@ -127,6 +127,19 @@ export default function FastAI() {
             <StyledCard>
             <StyledCardContent>
               <StyledTypography variant="h5">
+              Recommendations for Prospective Learners
+              </StyledTypography>
+              {fastAIData?.recommendationForProspectiveLearners?.map((recommendation: string, index: number) => (
+              <Typography key={index} variant="body2" color="textSecondary">
+                {recommendation}
+              </Typography>
+              )) || 'No data available'}
+            </StyledCardContent>
+            </StyledCard>
+
+            <StyledCard>
+            <StyledCardContent>
+              <StyledTypography variant="h5">
               Tools Used in the Course
               </StyledTypography>
               <Typography variant="body2" color="textSecondary">
@@ -138,37 +151,45 @@ export default function FastAI() {
             <StyledCard>
             <StyledCardContent>
               <StyledTypography variant="h5">
-              Review Summary
+              Review Summary: Positives
               </StyledTypography>
               <Typography variant="body2" color="textSecondary">
-              {fastAIData?.reviewSummary?.positiveAspects?.accessibilityForBeginners || 'No data available'}
+              • <strong>Accessibility for Beginners:</strong> {fastAIData?.reviewSummary?.positiveAspects?.accessibilityForBeginners || 'No data available'}
               </Typography>
               <Typography variant="body2" color="textSecondary">
-              {fastAIData?.reviewSummary?.positiveAspects?.handsOnLearning || 'No data available'}
+              • <strong>Hands-On Learning:</strong> {fastAIData?.reviewSummary?.positiveAspects?.handsOnLearning || 'No data available'}
               </Typography>
               <Typography variant="body2" color="textSecondary">
-              {fastAIData?.reviewSummary?.positiveAspects?.engagingContent || 'No data available'}
+              • <strong>Engaging Content:</strong> {fastAIData?.reviewSummary?.positiveAspects?.engagingContent || 'No data available'}
               </Typography>
               <Typography variant="body2" color="textSecondary">
-              {fastAIData?.reviewSummary?.positiveAspects?.communityAndSupport || 'No data available'}
+              • <strong>Community and Support:</strong> {fastAIData?.reviewSummary?.positiveAspects?.communityAndSupport || 'No data available'}
               </Typography>
               <Typography variant="body2" color="textSecondary">
-              {fastAIData?.reviewSummary?.positiveAspects?.inspirationalInstructor || 'No data available'}
+              • <strong>Inspirational Instructor:</strong> {fastAIData?.reviewSummary?.positiveAspects?.inspirationalInstructor || 'No data available'}
+              </Typography>
+              </StyledCardContent>
+              </StyledCard>
+
+              <StyledCard>
+              <StyledCardContent>
+              <StyledTypography variant="h5">
+              Review Summary: Critiques
+              </StyledTypography>
+              <Typography variant="body2" color="textSecondary">
+              • <strong>Gaps in Foundational Knowledge:</strong> {fastAIData?.reviewSummary?.critiques?.gapsInFoundationalKnowledge || 'No data available'}
               </Typography>
               <Typography variant="body2" color="textSecondary">
-              {fastAIData?.reviewSummary?.critiques?.gapsInFoundationalKnowledge || 'No data available'}
+              • <strong>Learning Style Mismatch:</strong> {fastAIData?.reviewSummary?.critiques?.learningStyleMismatch || 'No data available'}
               </Typography>
               <Typography variant="body2" color="textSecondary">
-              {fastAIData?.reviewSummary?.critiques?.learningStyleMismatch || 'No data available'}
+              • <strong>Practical vs Theoretical Balance:</strong> {fastAIData?.reviewSummary?.critiques?.practicalVsTheoreticalBalance || 'No data available'}
               </Typography>
               <Typography variant="body2" color="textSecondary">
-              {fastAIData?.reviewSummary?.critiques?.practicalVsTheoreticalBalance || 'No data available'}
+              • <strong>Steep Learning Curve:</strong> {fastAIData?.reviewSummary?.critiques?.steepLearningCurve || 'No data available'}
               </Typography>
               <Typography variant="body2" color="textSecondary">
-              {fastAIData?.reviewSummary?.critiques?.steepLearningCurve || 'No data available'}
-              </Typography>
-              <Typography variant="body2" color="textSecondary">
-              {fastAIData?.reviewSummary?.critiques?.variabilityInOutcomes || 'No data available'}
+              • <strong>Variability in Outcomes:</strong> {fastAIData?.reviewSummary?.critiques?.variabilityInOutcomes || 'No data available'}
               </Typography>
             </StyledCardContent>
             </StyledCard>
@@ -176,7 +197,7 @@ export default function FastAI() {
             <StyledCard>
             <StyledCardContent>
               <StyledTypography variant="h5">
-              Review Summary Source Overview
+              Where We Got the Data From
               </StyledTypography>
               <Typography variant="body2" color="textSecondary">
               {fastAIData?.reviewSummarySourceOverview || 'No data available'}
@@ -184,18 +205,7 @@ export default function FastAI() {
             </StyledCardContent>
             </StyledCard>
 
-            <StyledCard>
-            <StyledCardContent>
-              <StyledTypography variant="h5">
-              Recommendations for Prospective Learners
-              </StyledTypography>
-              {fastAIData?.recommendationForProspectiveLearners?.map((recommendation: string, index: number) => (
-              <Typography key={index} variant="body2" color="textSecondary">
-                {recommendation}
-              </Typography>
-              )) || 'No data available'}
-            </StyledCardContent>
-            </StyledCard>
+
 
             <StyledCard>
             <StyledCardContent>
