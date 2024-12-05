@@ -66,11 +66,11 @@ export default function FastAI() {
     flexDirection: 'column',
     padding: 0,
     height: '100%',
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: theme.palette.mode === 'light' ? theme.palette.grey[100] :theme.palette.background.paper,
     width: '100%',
     maxWidth: 700,
     '&:hover': {
-      backgroundColor: 'transparent',
+      backgroundColor: theme.palette.mode === 'light' ? theme.palette.grey[200] : 'transparent',
       cursor: 'pointer',
     },
     '&:focus-visible': {

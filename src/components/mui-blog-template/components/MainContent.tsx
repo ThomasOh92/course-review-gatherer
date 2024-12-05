@@ -34,9 +34,9 @@ const StyledCard = styled(Card)(({ theme }) => ({
   flexDirection: 'column',
   padding: 0,
   height: '100%',
-  backgroundColor: theme.palette.background.paper,
+  backgroundColor: theme.palette.mode === 'light' ? theme.palette.grey[100] :theme.palette.background.paper,
   '&:hover': {
-    backgroundColor: 'transparent',
+    backgroundColor: theme.palette.mode === 'light' ? theme.palette.grey[200] : 'transparent',
     cursor: 'pointer',
   },
   '&:focus-visible': {
@@ -187,7 +187,8 @@ export default function MainContent() {
               padding: 2,
               display: 'flex', 
               justifyContent: 'center', 
-              flexDirection: 'column'
+              flexDirection: 'column',
+              backgroundColor: (theme) => theme.palette.mode === 'light' ? theme.palette.grey[100] : 'default',
           }}
             square
           >
@@ -233,7 +234,8 @@ export default function MainContent() {
               mt: 2,
               display: 'flex', 
               justifyContent: 'center', 
-              flexDirection: 'column'
+              flexDirection: 'column',
+              backgroundColor: (theme) => theme.palette.mode === 'light' ? theme.palette.grey[100] : 'default',
           }}
             square
             >
