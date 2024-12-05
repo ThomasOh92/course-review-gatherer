@@ -172,315 +172,272 @@ export default function MainContent() {
   // };
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4, alignItems: 'center' }}>
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <Typography variant="h1" gutterBottom> Course Review Collector </Typography>
-        <Typography variant="subtitle1" >Deciding whether to start an online course? We collect and analyze reviews from unique sources</Typography>
-        <Paper 
-          elevation={3} 
-          sx={{ 
-            width: '100%', 
-            maxWidth: 600, 
-            padding: 2,
-            mt: 3, 
-            display: 'flex', 
-            justifyContent: 'center', 
-            flexDirection: 'column'
+    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, alignItems: 'center' }}>
+        <Typography variant="h1" > Course Review Collector </Typography>
+        <Typography variant="subtitle1" gutterBottom >Deciding whether to start an online course? We collect and analyze reviews from unique sources</Typography>
+        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 4, alignItems: { xs: 'center', md: 'flex-start' }, width: '100%' }}>
+          <Box>
+          <Paper 
+            elevation={3} 
+            sx={{ 
+              width: '100%', 
+              maxWidth: 400, 
+              padding: 2,
+              display: 'flex', 
+              justifyContent: 'center', 
+              flexDirection: 'column'
           }}
-          square
-        >
-            <Box sx={{ display: 'flex', gap: 2, flexDirection: 'row' }}>
-              <Box sx={{ padding: 1, mt: 1, flex: 1 }}>
-                  <Typography sx={{mb:1}}  >
-                  <strong>Sources of Info (adding more soon!) </strong>
-                  </Typography>
-                <Typography variant="body2" sx={{ color: 'grey' }}>
-                  Reddit Threads, Youtube Transcripts, Youtube Comments, Class Central
-                </Typography>
-              </Box>
-              <Box  sx={{ padding: 1, mt: 1, flex: 1 }}>
-                <Typography sx={{mb:1}}><strong>Main Prompt Refinements</strong></Typography>
-                <Typography variant="body2" sx={{ color: 'grey' }}>
-                  Summarize reviews in 3 bullet points + a paragraph. Focus on employability benefits, difficulty level, and engagement.
-                </Typography>
-              </Box>
-            </Box>
-            <Box sx={{ mt: 3, textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <Typography variant="body1" gutterBottom sx={{ maxWidth: 400 }}>
-                Help us improve this site! Submit a course you would like reviewed, or provide suggestions on our research approach.
-                </Typography>
-                <Box
-                sx={{
-                  display: 'inline-block',
-                  border: '1px solid',
-                  borderColor: 'success.main',
-                  borderRadius: 1,
-                  padding: '8px 16px',
-                  textAlign: 'center',
-                  cursor: 'pointer',
-                  '&:hover': {
-                  backgroundColor: 'success.light',
-                  },
-                }}
-                >
-                <Link 
-                  href="https://docs.google.com/forms/d/e/1FAIpQLSeUFYoCTEIF102LXtKRyzT708hFPE_dZN_Z3VZmTAPVTYkrOg/viewform" 
-                  target="_blank" 
-                  sx={{ color: 'success.main', textDecoration: 'none' }}
-                >
-                  Submit Feedback
-                </Link>
-                </Box>
-            </Box>
-        </Paper>
-      </div>
-      {/* <Box
-        sx={{
-          display: 'flex',
-          flexDirection: { xs: 'column-reverse', md: 'row' },
-          width: '100%',
-          justifyContent: 'space-between',
-          alignItems: { xs: 'start', md: 'center' },
-          gap: 4,
-          overflow: 'auto',
-        }}
-      >
-        <Box
-          sx={{
-            display: 'inline-flex',
-            flexDirection: 'row',
-            gap: 3,
-            overflow: 'auto',
-          }}
-        >
-          <Chip onClick={handleClick} size="medium" label="All categories" />
-          <Chip
-            onClick={handleClick}
-            size="medium"
-            label="Programming"
-            sx={{
-              backgroundColor: 'transparent',
-              border: 'none',
-            }}
-          />
-          <Chip
-            onClick={handleClick}
-            size="medium"
-            label="Data Science"
-            sx={{
-              backgroundColor: 'transparent',
-              border: 'none',
-            }}
-          />
-        </Box>
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            width: '100%',
-          }}
-        >
-          <Search />
-        </Box>
-      </Box> */}
-        <Grid xs={12} md={6}>
-          <Box
-            sx={{ display: 'flex', flexDirection: 'column', gap: 4, height: '100%', alignItems: 'center' }}
+            square
           >
-            <StyledCard
-              variant="outlined"
-              onFocus={() => handleFocus(3)}
-              onBlur={handleBlur}
-              tabIndex={0}
-              className={focusedCardIndex === 3 ? 'Mui-focused' : ''}
-              sx={{ height: '100%', maxWidth: 700 }}
-            >
-              <StyledCardContent
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  height: '100%',
-                }}
+          <Box sx={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <Typography variant="body1" gutterBottom sx={{ maxWidth: 300 }}>
+              Help us improve this site! Suggest a course you would like reviewed.
+              </Typography>
+              <Box
+              sx={{
+            display: 'inline-block',
+            border: '1px solid',
+            borderColor: 'success.main',
+            borderRadius: 1,
+            padding: '8px 16px',
+            textAlign: 'center',
+            cursor: 'pointer',
+            '&:hover': {
+            backgroundColor: 'success.light',
+            },
+              }}
               >
-                <div>
-                  {/* <Typography gutterBottom variant="caption" component="div">
-                    Programming
-                  </Typography> */}
-                    <Typography variant="h6" component="div">
-                      {cs50Data ? cs50Data.data()?.Title : 'Loading...'}
-                    </Typography>
-                    <List sx={{ padding: 0, margin: 0 }}>
-                      <ListItem sx={{ padding: 0, margin: 0 }}>
-                      <ListItemText primary="• Engaging but challenging" />
-                      </ListItem>
-                      <ListItem sx={{ padding: 0, margin: 0 }}>
-                      <ListItemText primary="• Foundational for learning computer science" />
-                      </ListItem>
-                      <ListItem sx={{ padding: 0, margin: 0 }}>
-                      <ListItemText primary="• Employability benefits are not immediate" />
-                      </ListItem>
-                    </List>
-                    <StyledTypography
-                      variant="body2"
-                      color="text.secondary"
-                      gutterBottom
-                      sx={{ display: 'block', overflow: 'visible', WebkitLineClamp: 'unset', mt: 1, mb: 1 }}
-                    >
-                      {cs50Data ? cs50Data.data()?.["Summarized Review"] : 'Loading...'}
-                    </StyledTypography>
-                    <Accordion>
-                    <AccordionSummary
-                        expandIcon={<ExpandMoreIcon />}
-                        aria-controls="panel1-content"
-                        id="panel1-header"
-                      >
-                        Analysed from 10 reddit threads, 1062 youtube comments and 452 Class Central Reviews
-                      </AccordionSummary>
-                      <AccordionDetails>
-                        Links to sources to be provided soon...
-                      </AccordionDetails>
-                    </Accordion>
-                </div>
-                <Link 
-                    sx={{ display: 'block', overflow: 'visible', WebkitLineClamp: 'unset', mt: 1, mb: 1, color: 'primary.main'}}
-                    href={cs50Data ? cs50Data.data()?.Link : 'Loading...'} 
-                    target='_blank'
-                    >
-                    Link to Course
-                  </Link>
-              </StyledCardContent>
-            </StyledCard>
-            <StyledCard
-              variant="outlined"
-              onFocus={() => handleFocus(3)}
-              onBlur={handleBlur}
-              tabIndex={0}
-              className={focusedCardIndex === 3 ? 'Mui-focused' : ''}
-              sx={{ height: '100%', maxWidth: 700 }}
-            >
-              <StyledCardContent
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  height: '100%',
-                }}
+              <Link 
+            href="https://docs.google.com/forms/d/e/1FAIpQLSeUFYoCTEIF102LXtKRyzT708hFPE_dZN_Z3VZmTAPVTYkrOg/viewform" 
+            target="_blank" 
+            sx={{ color: 'success.main', textDecoration: 'none' }}
               >
-                <div>
-                  {/* <Typography gutterBottom variant="caption" component="div">
-                    Programming
-                  </Typography> */}
-                    <Typography variant="h6" component="div">
-                      {googleAIEssentialsData ? googleAIEssentialsData.data()?.Title : 'Loading...'}
-                    </Typography>
-                    <List sx={{ padding: 0, margin: 0 }}>
-                      <ListItem sx={{ padding: 0, margin: 0 }}>
-                      <ListItemText primary="• Beginner-friendly, no technical experience required" />
-                      </ListItem>
-                      <ListItem sx={{ padding: 0, margin: 0 }}>
-                      <ListItemText primary="• Focuses on practical AI applications in the workplace" />
-                      </ListItem>
-                      <ListItem sx={{ padding: 0, margin: 0 }}>
-                      <ListItemText primary="• Employability benefits not clear" />
-                      </ListItem>
-                    </List>
-                    <StyledTypography
-                      variant="body2"
-                      color="text.secondary"
-                      gutterBottom
-                      sx={{ display: 'block', overflow: 'visible', WebkitLineClamp: 'unset', mt: 1, mb: 1 }}
-                    >
-                      {googleAIEssentialsData ? googleAIEssentialsData.data()?.["Summarized Review"] : 'Loading...'}
-                    </StyledTypography>
-                    <Accordion>
-                    <AccordionSummary
-                        expandIcon={<ExpandMoreIcon />}
-                        aria-controls="panel1-content"
-                        id="panel1-header"
-                      >
-                        Analysed from 3 reddit threads, 2 youtube videos and 202 youtube comments
-                      </AccordionSummary>
-                      <AccordionDetails>
-                        Links to sources to be provided soon...
-                      </AccordionDetails>
-                    </Accordion>
-                </div>
-                <Link 
-                    sx={{ display: 'block', overflow: 'visible', WebkitLineClamp: 'unset', mt: 1, mb: 1, color: 'primary.main'}}
-                    href={googleAIEssentialsData ? googleAIEssentialsData.data()?.Link : 'Loading...'} 
-                    target='_blank'
-                    >
-                    Link to Course
-                  </Link>
-              </StyledCardContent>
-            </StyledCard>
-            <StyledCard
-              variant="outlined"
-              onFocus={() => handleFocus(3)}
-              onBlur={handleBlur}
-              tabIndex={0}
-              className={focusedCardIndex === 3 ? 'Mui-focused' : ''}
-              sx={{ height: '100%', maxWidth: 700 }}
-            >
-              <StyledCardContent
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  height: '100%',
-                }}
-              >
-                <div>
-                  {/* <Typography gutterBottom variant="caption" component="div">
-                    Programming
-                  </Typography> */}
-                    <Typography variant="h6" component="div">
-                      {GenAINanoDegreeUdacityData ? GenAINanoDegreeUdacityData.data()?.Title : 'Loading...'}
-                    </Typography>
-                    <List sx={{ padding: 0, margin: 0 }}>
-                      <ListItem sx={{ padding: 0, margin: 0 }}>
-                      <ListItemText primary="• An excellent Generative AI course" />
-                      </ListItem>
-                      <ListItem sx={{ padding: 0, margin: 0 }}>
-                      <ListItemText primary="• Intermediate level; requires Python and SQL knowledge" />
-                      </ListItem>
-                      <ListItem sx={{ padding: 0, margin: 0 }}>
-                      <ListItemText primary="• Includes hands-on projects, especially for real-world tasks like image generation and chatbot creation" />
-                      </ListItem>
-                    </List>
-                    <StyledTypography
-                      variant="body2"
-                      color="text.secondary"
-                      gutterBottom
-                      sx={{ display: 'block', overflow: 'visible', WebkitLineClamp: 'unset', mt: 1, mb: 1 }}
-                    >
-                      {GenAINanoDegreeUdacityData ? GenAINanoDegreeUdacityData.data()?.["Summarized Review"] : 'Loading...'}
-                    </StyledTypography>
-                    <Accordion>
-                    <AccordionSummary
-                        expandIcon={<ExpandMoreIcon />}
-                        aria-controls="panel1-content"
-                        id="panel1-header"
-                      >
-                        Analysed from 1 reddit threads and 157 youtube comments
-                      </AccordionSummary>
-                      <AccordionDetails>
-                        Links to sources to be provided soon...
-                      </AccordionDetails>
-                    </Accordion>
-                </div>
-                <Link 
-                    sx={{ display: 'block', overflow: 'visible', WebkitLineClamp: 'unset', mt: 1, mb: 1, color: 'primary.main'}}
-                    href={GenAINanoDegreeUdacityData ? GenAINanoDegreeUdacityData.data()?.Link : 'Loading...'} 
-                    target='_blank'
-                    >
-                    Link to Course
-                  </Link>
-              </StyledCardContent>
-            </StyledCard>
+            Submit Suggestion
+              </Link>
+              </Box>
           </Box>
-        </Grid>
+          </Paper>
+
+          <Paper 
+            elevation={3} 
+            sx={{ 
+              width: '100%', 
+              maxWidth: 400, 
+              padding: 2,
+              mt: 4,
+              display: 'flex', 
+              justifyContent: 'center', 
+              flexDirection: 'column'
+          }}
+            square
+            >
+              <Box sx={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <Typography variant="h6" gutterBottom>
+                  People We've Helped
+                </Typography>
+                <List>
+                  <ListItem>
+                    <ListItemText
+                      primary="P. Lee"
+                      secondary="Requested a review of 'Fast AI: Practical Deep Learning for Coders' - Created on 15 Nov 2024"
+                    />
+                  </ListItem>
+                </List>
+              </Box>
+          </Paper>
+          </Box>
+
+
+          <Grid xs={12} md={6}>
+            <Box
+          sx={{ display: 'flex', flexDirection: 'column', gap: 4, height: '100%', alignItems: 'center' }}
+            >
+          <StyledCard
+            variant="outlined"
+            onFocus={() => handleFocus(3)}
+            onBlur={handleBlur}
+            tabIndex={0}
+            className={focusedCardIndex === 3 ? 'Mui-focused' : ''}
+            sx={{ height: '100%', maxWidth: 700 }}
+          >
+            <StyledCardContent
+              sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            height: '100%',
+              }}
+            >
+              <div>
+              <Typography variant="h6" component="div">
+                {cs50Data ? cs50Data.data()?.Title : 'Loading...'}
+              </Typography>
+              <List sx={{ padding: 0, margin: 0 }}>
+                <ListItem sx={{ padding: 0, margin: 0 }}>
+                <ListItemText primary="• Engaging but challenging" />
+                </ListItem>
+                <ListItem sx={{ padding: 0, margin: 0 }}>
+                <ListItemText primary="• Foundational for learning computer science" />
+                </ListItem>
+                <ListItem sx={{ padding: 0, margin: 0 }}>
+                <ListItemText primary="• Employability benefits are not immediate" />
+                </ListItem>
+              </List>
+              <StyledTypography
+                variant="body2"
+                color="text.secondary"
+                gutterBottom
+                sx={{ display: 'block', overflow: 'visible', WebkitLineClamp: 'unset', mt: 1, mb: 1 }}
+              >
+                {cs50Data ? cs50Data.data()?.["Summarized Review"] : 'Loading...'}
+              </StyledTypography>
+              <Accordion>
+              <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1-content"
+              id="panel1-header"
+                >
+              Analysed from 10 reddit threads, 1062 youtube comments and 452 Class Central Reviews
+                </AccordionSummary>
+                <AccordionDetails>
+              Links to sources to be provided soon...
+                </AccordionDetails>
+              </Accordion>
+              </div>
+              <Link 
+              sx={{ display: 'block', overflow: 'visible', WebkitLineClamp: 'unset', mt: 1, mb: 1, color: 'primary.main'}}
+              href={cs50Data ? cs50Data.data()?.Link : 'Loading...'} 
+              target='_blank'
+              >
+              Link to Course
+            </Link>
+            </StyledCardContent>
+          </StyledCard>
+          <StyledCard
+            variant="outlined"
+            onFocus={() => handleFocus(3)}
+            onBlur={handleBlur}
+            tabIndex={0}
+            className={focusedCardIndex === 3 ? 'Mui-focused' : ''}
+            sx={{ height: '100%', maxWidth: 700 }}
+          >
+            <StyledCardContent
+              sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            height: '100%',
+              }}
+            >
+              <div>
+              <Typography variant="h6" component="div">
+                {googleAIEssentialsData ? googleAIEssentialsData.data()?.Title : 'Loading...'}
+              </Typography>
+              <List sx={{ padding: 0, margin: 0 }}>
+                <ListItem sx={{ padding: 0, margin: 0 }}>
+                <ListItemText primary="• Beginner-friendly, no technical experience required" />
+                </ListItem>
+                <ListItem sx={{ padding: 0, margin: 0 }}>
+                <ListItemText primary="• Focuses on practical AI applications in the workplace" />
+                </ListItem>
+                <ListItem sx={{ padding: 0, margin: 0 }}>
+                <ListItemText primary="• Employability benefits not clear" />
+                </ListItem>
+              </List>
+              <StyledTypography
+                variant="body2"
+                color="text.secondary"
+                gutterBottom
+                sx={{ display: 'block', overflow: 'visible', WebkitLineClamp: 'unset', mt: 1, mb: 1 }}
+              >
+                {googleAIEssentialsData ? googleAIEssentialsData.data()?.["Summarized Review"] : 'Loading...'}
+              </StyledTypography>
+              <Accordion>
+              <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1-content"
+              id="panel1-header"
+                >
+              Analysed from 3 reddit threads, 2 youtube videos and 202 youtube comments
+                </AccordionSummary>
+                <AccordionDetails>
+              Links to sources to be provided soon...
+                </AccordionDetails>
+              </Accordion>
+              </div>
+              <Link 
+              sx={{ display: 'block', overflow: 'visible', WebkitLineClamp: 'unset', mt: 1, mb: 1, color: 'primary.main'}}
+              href={googleAIEssentialsData ? googleAIEssentialsData.data()?.Link : 'Loading...'} 
+              target='_blank'
+              >
+              Link to Course
+            </Link>
+            </StyledCardContent>
+          </StyledCard>
+          <StyledCard
+            variant="outlined"
+            onFocus={() => handleFocus(3)}
+            onBlur={handleBlur}
+            tabIndex={0}
+            className={focusedCardIndex === 3 ? 'Mui-focused' : ''}
+            sx={{ height: '100%', maxWidth: 700 }}
+          >
+            <StyledCardContent
+              sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            height: '100%',
+              }}
+            >
+              <div>
+              <Typography variant="h6" component="div">
+                {GenAINanoDegreeUdacityData ? GenAINanoDegreeUdacityData.data()?.Title : 'Loading...'}
+              </Typography>
+              <List sx={{ padding: 0, margin: 0 }}>
+                <ListItem sx={{ padding: 0, margin: 0 }}>
+                <ListItemText primary="• An excellent Generative AI course" />
+                </ListItem>
+                <ListItem sx={{ padding: 0, margin: 0 }}>
+                <ListItemText primary="• Intermediate level; requires Python and SQL knowledge" />
+                </ListItem>
+                <ListItem sx={{ padding: 0, margin: 0 }}>
+                <ListItemText primary="• Includes hands-on projects, especially for real-world tasks like image generation and chatbot creation" />
+                </ListItem>
+              </List>
+              <StyledTypography
+                variant="body2"
+                color="text.secondary"
+                gutterBottom
+                sx={{ display: 'block', overflow: 'visible', WebkitLineClamp: 'unset', mt: 1, mb: 1 }}
+              >
+                {GenAINanoDegreeUdacityData ? GenAINanoDegreeUdacityData.data()?.["Summarized Review"] : 'Loading...'}
+              </StyledTypography>
+              <Accordion>
+              <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1-content"
+              id="panel1-header"
+                >
+              Analysed from 1 reddit threads and 157 youtube comments
+                </AccordionSummary>
+                <AccordionDetails>
+              Links to sources to be provided soon...
+                </AccordionDetails>
+              </Accordion>
+              </div>
+              <Link 
+              sx={{ display: 'block', overflow: 'visible', WebkitLineClamp: 'unset', mt: 1, mb: 1, color: 'primary.main'}}
+              href={GenAINanoDegreeUdacityData ? GenAINanoDegreeUdacityData.data()?.Link : 'Loading...'} 
+              target='_blank'
+              >
+              Link to Course
+            </Link>
+            </StyledCardContent>
+          </StyledCard>
+            </Box>
+          </Grid>
+        </Box>
     </Box>
   );
 }
