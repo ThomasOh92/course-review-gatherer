@@ -342,7 +342,7 @@ export default function MainContent() {
               gutterBottom
               sx={{ display: 'block', overflow: 'visible', WebkitLineClamp: 'unset', mt: 1, mb: 1 }}
               >
-              Collected Reviews Coming Soon...
+              Summary Coming Soon...
               </StyledTypography>
               </div>
             </StyledCardContent>
@@ -374,7 +374,7 @@ export default function MainContent() {
               gutterBottom
               sx={{ display: 'block', overflow: 'visible', WebkitLineClamp: 'unset', mt: 1, mb: 1 }}
               >
-              Collected Reviews Coming Soon...
+              Summary Coming Soon...
               </StyledTypography>
               </div>
             </StyledCardContent>
@@ -406,7 +406,7 @@ export default function MainContent() {
               gutterBottom
               sx={{ display: 'block', overflow: 'visible', WebkitLineClamp: 'unset', mt: 1, mb: 1 }}
               >
-              Collected Reviews Coming Soon...
+              Summary Coming Soon...
               </StyledTypography>
               </div>
             </StyledCardContent>
