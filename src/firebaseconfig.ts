@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { initializeFirestore, getFirestore, connectFirestoreEmulator, collection, addDoc } from "firebase/firestore";
+import { getAnalytics, logEvent } from "firebase/analytics";
 
 // TODO: Replace the following with your app's Firebase project configuration
 // See: https://support.google.com/firebase/answer/7015592
@@ -15,6 +16,24 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
+// Initialize Analytics and get a reference to the service
+const analytics = getAnalytics(app);
+
+// Function to track page views
+function trackPageView(pageName: string) {
+  logEvent(analytics, 'page_view', { page_title: pageName });
+}
+
+// Example usage: Track homepage visit
+if (window.location.pathname === '/') {
+  trackPageView('homepage');
+}
+
+// Example usage: Track FastAI page visit
+if (window.location.pathname === '/fastai') {
+  trackPageView('fastai_page');
+}
 
 // Settings for Firestore
 initializeFirestore(app, {
