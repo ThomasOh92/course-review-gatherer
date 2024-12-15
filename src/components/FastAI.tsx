@@ -10,8 +10,13 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
 import { useState, useEffect } from 'react';
-import { collection, doc, addDoc, getDoc, getDocs, query } from 'firebase/firestore';
+import { collection, doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebaseconfig';
 
 
@@ -101,134 +106,105 @@ export default function FastAI() {
 
 
   return (
-      <ThemeProvider theme={showCustomTheme ? blogTheme : defaultTheme}>
-        <CssBaseline enableColorScheme />
-        <Container
-          maxWidth="lg"
-          component="main"
-          sx={{ display: 'flex', flexDirection: 'column', my: 6, gap: 4 }}
-        >
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, alignItems: 'center' }}>
-        <Typography variant="h1" gutterBottom maxWidth='700px' align="center"> Fast AI: Practical Deep Learning for Coders </Typography>
-            <StyledCard>
-            <StyledCardContent>
-              <StyledTypography variant="h5">
-              Curriculum Summary
-              </StyledTypography>
-              <Typography variant="body2" color="textSecondary">
-              {fastAIData?.curriculumSummary?.firstHalf || 'No data available'}
-              </Typography>
-              <Typography variant="body2" color="textSecondary">
-              {fastAIData?.curriculumSummary?.secondHalf || 'No data available'}
-              </Typography>
-            </StyledCardContent>
-            </StyledCard>
-
-            <StyledCard>
-            <StyledCardContent>
-              <StyledTypography variant="h5">
-              Recommendations for Prospective Learners
-              </StyledTypography>
-              {fastAIData?.recommendationForProspectiveLearners?.map((recommendation: string, index: number) => (
-              <Typography key={index} variant="body2" color="textSecondary">
-                {recommendation}
-              </Typography>
-              )) || 'No data available'}
-            </StyledCardContent>
-            </StyledCard>
-
-            <StyledCard>
-            <StyledCardContent>
-              <StyledTypography variant="h5">
-              Tools Used in the Course
-              </StyledTypography>
-              <Typography variant="body2" color="textSecondary">
-              {fastAIData?.tools || 'No data available'}
-              </Typography>
-            </StyledCardContent>
-            </StyledCard>
-
-            <StyledCard>
-            <StyledCardContent>
-              <StyledTypography variant="h5">
-              Review Summary: Positives
-              </StyledTypography>
-              <Typography variant="body2" color="textSecondary">
-              • <strong>Accessibility for Beginners:</strong> {fastAIData?.reviewSummary?.positiveAspects?.accessibilityForBeginners || 'No data available'}
-              </Typography>
-              <Typography variant="body2" color="textSecondary">
-              • <strong>Hands-On Learning:</strong> {fastAIData?.reviewSummary?.positiveAspects?.handsOnLearning || 'No data available'}
-              </Typography>
-              <Typography variant="body2" color="textSecondary">
-              • <strong>Engaging Content:</strong> {fastAIData?.reviewSummary?.positiveAspects?.engagingContent || 'No data available'}
-              </Typography>
-              <Typography variant="body2" color="textSecondary">
-              • <strong>Community and Support:</strong> {fastAIData?.reviewSummary?.positiveAspects?.communityAndSupport || 'No data available'}
-              </Typography>
-              <Typography variant="body2" color="textSecondary">
-              • <strong>Inspirational Instructor:</strong> {fastAIData?.reviewSummary?.positiveAspects?.inspirationalInstructor || 'No data available'}
-              </Typography>
+    <ThemeProvider theme={showCustomTheme ? blogTheme : defaultTheme}>
+    <CssBaseline enableColorScheme />
+    <Container
+      maxWidth="lg"
+      component="main"
+      sx={{ display: 'flex', flexDirection: 'column', my: 6, gap: 4 }}
+    >
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, alignItems: 'center' }}>
+          <Typography variant="h2" gutterBottom maxWidth='700px' align="center"> Fast AI: Practical Deep Learning for Coders </Typography>
+          <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 4, alignItems: { xs: 'center', md: 'flex-start' }, width: '100%' }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+            <Paper
+              tabIndex={0}
+              sx={{ height: '100%', maxWidth: 500 }}
+            >
+              <StyledCardContent
+                sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+              height: '100%',
+                }}
+              >
+                <div>
+                <Typography variant="h6" component="div">
+                  Summary
+                </Typography>
+                  <List sx={{ padding: 0, margin: 0 }}>
+                  {fastAIData?.bulletPoints.map((point: string, index: number) => (
+                    <ListItem key={index} sx={{ padding: 0, margin: 0 }}>
+                    <ListItemText primary={`• ${point}`} />
+                    </ListItem>
+                  ))}
+                  </List>
+                <StyledTypography
+                  variant="body2"
+                  color="text.secondary"
+                  gutterBottom
+                  sx={{ display: 'block', overflow: 'visible', WebkitLineClamp: 'unset', mt: 1, mb: 1 }}
+                >
+                  {fastAIData ? fastAIData?.shortSummary : 'Loading...'}
+                </StyledTypography>
+                </div>
               </StyledCardContent>
-              </StyledCard>
-
-              <StyledCard>
-              <StyledCardContent>
-              <StyledTypography variant="h5">
-              Review Summary: Critiques
-              </StyledTypography>
-              <Typography variant="body2" color="textSecondary">
-              • <strong>Gaps in Foundational Knowledge:</strong> {fastAIData?.reviewSummary?.critiques?.gapsInFoundationalKnowledge || 'No data available'}
-              </Typography>
-              <Typography variant="body2" color="textSecondary">
-              • <strong>Learning Style Mismatch:</strong> {fastAIData?.reviewSummary?.critiques?.learningStyleMismatch || 'No data available'}
-              </Typography>
-              <Typography variant="body2" color="textSecondary">
-              • <strong>Practical vs Theoretical Balance:</strong> {fastAIData?.reviewSummary?.critiques?.practicalVsTheoreticalBalance || 'No data available'}
-              </Typography>
-              <Typography variant="body2" color="textSecondary">
-              • <strong>Steep Learning Curve:</strong> {fastAIData?.reviewSummary?.critiques?.steepLearningCurve || 'No data available'}
-              </Typography>
-              <Typography variant="body2" color="textSecondary">
-              • <strong>Variability in Outcomes:</strong> {fastAIData?.reviewSummary?.critiques?.variabilityInOutcomes || 'No data available'}
-              </Typography>
-            </StyledCardContent>
-            </StyledCard>
-
-            <StyledCard>
-            <StyledCardContent>
-              <StyledTypography variant="h5">
-              Where We Got the Data From
-              </StyledTypography>
-              <Typography variant="body2" color="textSecondary">
-              {fastAIData?.reviewSummarySourceOverview || 'No data available'}
-              </Typography>
-            </StyledCardContent>
-            </StyledCard>
-
-
-
-            <StyledCard>
-            <StyledCardContent>
-              <StyledTypography variant="h5">
-              Key Quotes and Relevant Links
-              </StyledTypography>
+            </Paper>
+            <Paper
+              tabIndex={0}
+              sx={{ height: '100%', maxWidth: 500 }}
+            >
+              <StyledCardContent
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  height: '100%',
+                }}
+              >
+                  <Typography variant="h6" component="div">
+                    Review Sources
+                  </Typography>
+                  <StyledTypography
+                    variant="body2"
+                    color="text.secondary"
+                    gutterBottom
+                    sx={{ display: 'block', overflow: 'visible', WebkitLineClamp: 'unset', mb: 1 }}
+                  >
+                    {fastAIData ? fastAIData?.ReviewSourceDataNotes : 'Loading...'}
+                  </StyledTypography>
+                </StyledCardContent>
+            </Paper>
+          </Box>
+          <Grid xs={12} md={6}>
+              <Box
+            sx={{ display: 'flex', flexDirection: 'column', gap: 2, height: '100%', alignItems: 'center' }}
+              >
+              
               {fastAIData?.keyQuotesAndRelevantLinks?.map((quote: any, index: number) => (
-              <Box key={index} sx={{ mb: 2 }}>
-                <Typography variant="body2" color="textSecondary">
-                <strong>{quote.source}:</strong> {quote.quote}
-                </Typography>
-                <Typography variant="body2" color="textSecondary">
-                <a href={quote.url} target="_blank" rel="noopener noreferrer">{quote.url}</a>
-                </Typography>
-              </Box>
+                <StyledCard key={index}>
+                <StyledCardContent>
+                  <Box >
+                  <Typography variant="body2" color="textSecondary" sx={{mb: 1}}>
+                    <strong>{quote.source}:</strong> {quote.quote}
+                  </Typography>
+                  <Typography variant="body2" color="textSecondary">
+                    <a href={quote.url} target="_blank" rel="noopener noreferrer">
+                    {quote.url.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "").split('/')[0]}
+                    </a>
+                  </Typography>
+                  </Box>
+                </StyledCardContent>
+                </StyledCard>
               )) || 'No data available'}
-            </StyledCardContent>
-            </StyledCard>
-
-        </Box>
-        <Footer />
-        </Container>
-      </ThemeProvider>
-      
+                  </Box>
+          </Grid>
+          </Box>
+      </Box>
+      <Footer />
+      </Container>
+        
+    </ThemeProvider>  
   );
 }
