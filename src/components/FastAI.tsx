@@ -3,11 +3,8 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { PaletteMode } from '@mui/material';
-import Footer from './mui-blog-template/components/Footer';
-import getBlogTheme from './mui-blog-template/theme/getBlogTheme';
-import { styled } from '@mui/material/styles';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
+import Footer from './Footer';
+import getBlogTheme from './mui-theme/getTheme';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -16,8 +13,9 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import { useState, useEffect } from 'react';
-import { collection, doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebaseconfig';
+import { StyledCard, StyledCardContent, StyledTypography } from './helper-components/custom-styled-mui-components';
 
 
 export default function FastAI() {
@@ -64,45 +62,6 @@ export default function FastAI() {
       setMode(systemPrefersDark ? 'dark' : 'light');
     }
   }, []);
-
-  
-  const StyledCard = styled(Card)(({ theme }) => ({
-    display: 'flex',
-    flexDirection: 'column',
-    padding: 0,
-    height: '100%',
-    backgroundColor: theme.palette.mode === 'light' ? theme.palette.grey[100] :theme.palette.background.paper,
-    width: '100%',
-    maxWidth: 700,
-    '&:hover': {
-      backgroundColor: theme.palette.mode === 'light' ? theme.palette.grey[200] : 'transparent',
-      cursor: 'pointer',
-    },
-    '&:focus-visible': {
-      outline: '3px solid',
-      outlineColor: 'hsla(210, 98%, 48%, 0.5)',
-      outlineOffset: '2px',
-    },
-  }));
-
-  const StyledCardContent = styled(CardContent)({
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 4,
-    padding: 16,
-    flexGrow: 1,
-    '&:last-child': {
-      paddingBottom: 16,
-    },
-  });
-
-  const StyledTypography = styled(Typography)({
-    display: '-webkit-box',
-    WebkitBoxOrient: 'vertical',
-    WebkitLineClamp: 2,
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
-  });
 
 
   return (
