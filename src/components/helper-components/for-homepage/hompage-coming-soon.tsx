@@ -1,6 +1,6 @@
 import React from 'react';
 import { Typography } from '@mui/material';
-import { StyledCard, StyledCardContent, StyledTypography } from './custom-styled-mui-components';
+import { StyledCard, StyledCardContent, StyledTypography } from '../custom-styled-mui-components';
 
 interface HomepageComingSoonProps {
     title: string;

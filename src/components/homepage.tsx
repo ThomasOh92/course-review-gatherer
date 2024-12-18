@@ -11,10 +11,10 @@ import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebaseconfig';
 import Footer from './Footer';
 import getBlogTheme from './mui-theme/getTheme';
-import SuggestCourse from './helper-components/suggest-course';
-import PeopleHelped from './helper-components/people-helped';
-import HomepageSummaryCard from './helper-components/homepage-summary-card';
-import HomepageComingSoon from './helper-components/hompage-coming-soon';
+import SuggestCourse from './helper-components/for-homepage/suggest-course';
+import PeopleHelped from './helper-components/for-homepage/people-helped';
+import HomepageSummaryCard from './helper-components/for-homepage/homepage-summary-card';
+import HomepageComingSoon from './helper-components/for-homepage/hompage-coming-soon';
 
 export default function HomePage() {
   const [mode, setMode] = React.useState<PaletteMode>('light');

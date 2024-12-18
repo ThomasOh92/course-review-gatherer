@@ -1,14 +1,14 @@
 import React from 'react';
 import { Card, Typography, List, ListItem, ListItemText, Box, Link } from '@mui/material';
-import { StyledCard, StyledCardContent, StyledTypography } from './custom-styled-mui-components';
+import { StyledCard, StyledCardContent, StyledTypography } from '../custom-styled-mui-components';
 
 interface Data {
     CollectedReviewHref: string | undefined;
     Title: string;
-    bulletPoints: string[];
-    shortSummary: string;
+    BulletPoints: string[];
+    ShortSummary: string;
     ReviewSourceDataNotes: string;
-    Link: string;
+    CourseLink: string;
     data: () => Data;
 }
 
@@ -52,7 +52,7 @@ const HomepageSummaryCard: React.FC<HomepageSummaryCardProps> = ({ data }) => {
                         {data ? data.Title : 'Loading...'}
                     </Typography>
                     <List sx={{ padding: 0, margin: 0 }}>
-                        {data?.bulletPoints?.map((point: string, index: number) => (
+                        {data?.BulletPoints?.map((point: string, index: number) => (
                             <ListItem key={index} sx={{ padding: 0, margin: 0 }}>
                                 <ListItemText primary={`• ${point}`} />
                             </ListItem>
@@ -64,7 +64,7 @@ const HomepageSummaryCard: React.FC<HomepageSummaryCardProps> = ({ data }) => {
                         gutterBottom
                         sx={{ display: 'block', overflow: 'visible', WebkitLineClamp: 'unset', mt: 1, mb: 1 }}
                     >
-                        {data ? data.shortSummary : 'Loading...'}
+                        {data ? data.ShortSummary : 'Loading...'}
                     </StyledTypography>
                     <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
                         <Card sx={{ maxWidth: 500, textAlign: 'center' }}>
@@ -75,7 +75,7 @@ const HomepageSummaryCard: React.FC<HomepageSummaryCardProps> = ({ data }) => {
                 <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
                     <Link
                         sx={{ display: 'block', overflow: 'visible', WebkitLineClamp: 'unset', color: 'primary.main' }}
-                        href={data ? data.Link : 'Loading...'}
+                        href={data ? data.CourseLink : 'Loading...'}
                         target='_blank'
                     >
                         Link to Course
