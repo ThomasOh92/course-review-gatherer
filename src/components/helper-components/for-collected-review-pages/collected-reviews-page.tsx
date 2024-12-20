@@ -11,6 +11,7 @@ import getTheme from '../../mui-theme/getTheme';
 import CollectedReviewShortSummary from './collected-reviews-short-summary';
 import CollectedReviewsSources from './collected-reviews-sources';
 import CollectedReviewsAll from './collected-reviews-all';
+import Link from '@mui/material/Link';
 
 interface ReviewPageProps {
     data: any;
@@ -46,14 +47,32 @@ const ReviewPage: React.FC<ReviewPageProps> = ({data }) => {
                     <Typography variant="h2" gutterBottom maxWidth='700px' align="center">{data?.Title}</Typography>
                     <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 4, alignItems: { xs: 'center', md: 'flex-start' }, width: '100%' }}>
                         {/* Left hand Column */}
-                        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems:'center', gap: 2 }}>
+                            <Link 
+                                href={data?.CourseLink} 
+                                target="_blank" 
+                                rel="noopener" 
+                                sx={{ 
+                                    textDecoration: 'none', 
+                                    padding: '8px 16px', 
+                                    border: '1px solid', 
+                                    borderColor: 'primary.main', 
+                                    borderRadius: '4px', 
+                                    '&:hover': {
+                                        backgroundColor: 'primary.light',
+                                        borderColor: 'primary.dark',
+                                    }
+                                }}
+                            >
+                                Go to Course
+                            </Link>
                             <CollectedReviewShortSummary data={data} />
-                            <CollectedReviewsSources data={data} />
+                            <CollectedReviewsSources data={data} />     
                         </Box>
                         <Grid xs={12} md={6}>
                             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, height: '100%', alignItems: 'center' }}>
-                                {data?.CollectedReviews?.map((quote: any, index: number) => (
-                                    <CollectedReviewsAll source={quote.source} quote={quote.quote} url={quote.url} key={index}  />
+                                {data?.CollectedReviews?.map((review: any, index: number) => (
+                                    <CollectedReviewsAll  quote={review.quote} source_url={review.source_url} key={index}  />
                                 )) || 'No data available'}
                             </Box>
                         </Grid>

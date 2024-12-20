@@ -19,7 +19,7 @@ const CollectedReviewShortSummary: React.FC<CollectedReviewShortSummaryProps> = 
             <StyledCardContent>
                 <div>
                     <Typography variant="h6" component="div">Summary</Typography>
-                    <List sx={{ padding: 0, margin: 0 }}>
+                    <List sx={{ padding: 0, margin: 0, mb: 2 }} >
                         {data?.BulletPoints.map((point: string, index: number) => (
                             <ListItem key={index} sx={{ padding: 0, margin: 0 }}>
                                 <ListItemText primary={`• ${point}`} />
