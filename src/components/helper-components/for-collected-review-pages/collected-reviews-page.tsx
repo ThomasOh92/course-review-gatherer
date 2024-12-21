@@ -39,13 +39,13 @@ const ReviewPage: React.FC<ReviewPageProps> = ({data }) => {
         <ThemeProvider theme={showCustomTheme ? mainTheme : defaultTheme}>
             <CssBaseline enableColorScheme />
             <Container
-                maxWidth="lg"
+                maxWidth="xl"
                 component="main"
                 sx={{ display: 'flex', flexDirection: 'column', my: 6, gap: 4 }}
             >
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, alignItems: 'center' }}>
                     <Typography variant="h2" gutterBottom maxWidth='700px' align="center">{data?.Title}</Typography>
-                    <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 4, alignItems: { xs: 'center', md: 'flex-start' }, width: '100%' }}>
+                    <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 4, alignItems: { xs: 'center', md: 'flex-start' }, width: '100%', justifyContent: 'center' }}>
                         {/* Left hand Column */}
                         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems:'center', gap: 2 }}>
                             <Link 
@@ -72,7 +72,16 @@ const ReviewPage: React.FC<ReviewPageProps> = ({data }) => {
                         <Grid xs={12} md={6}>
                             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, height: '100%', alignItems: 'center' }}>
                                 {data?.CollectedReviews?.map((review: any, index: number) => (
-                                    <CollectedReviewsAll  quote={review.quote} source_url={review.source_url} key={index}  />
+                                    <CollectedReviewsAll  
+                                        quote={review.quote} 
+                                        source={review.source} 
+                                        source_url={review.source_url} 
+                                        bolded_text={review.bolded_text}
+                                        flagged_status={review.flagged_status}
+                                        keywords={review.keywords}
+                                        sentiment={review.sentiment}
+                                        date={review.date} 
+                                        key={index}  />
                                 )) || 'No data available'}
                             </Box>
                         </Grid>
