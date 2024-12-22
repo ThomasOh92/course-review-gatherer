@@ -10,16 +10,19 @@ import Footer from '../../Footer';
 import getTheme from '../../mui-theme/getTheme';
 import CollectedReviewShortSummary from './collected-reviews-short-summary';
 import CollectedReviewsSources from './collected-reviews-sources';
-import CollectedReviewsAll from './collected-reviews-all';
+import IndividualReview from './individual-review';
 import Link from '@mui/material/Link';
+import Chip from '@mui/material/Chip';
+import Stack from '@mui/material/Stack';
 
 interface ReviewPageProps {
     data: any;
 }
 
-const ReviewPage: React.FC<ReviewPageProps> = ({data }) => {
+const ReviewPage: React.FC<ReviewPageProps> = ({data}) => {
     const [mode, setMode] = React.useState<PaletteMode>('light');
     const [showCustomTheme, setShowCustomTheme] = React.useState(true);
+    const [displayedReviews, setDisplayedReviews] = React.useState<any | null>(null);
     const mainTheme = createTheme(getTheme(mode));
     const defaultTheme = createTheme({ palette: { mode } });
 
@@ -33,7 +36,21 @@ const ReviewPage: React.FC<ReviewPageProps> = ({data }) => {
         }
     }, []);
 
-    console.log(data);
+
+    React.useEffect(() => {
+        if (data?.CollectedReviews) {
+            setDisplayedReviews(data.CollectedReviews);
+        }
+    }, [data]);
+
+    const filterReviewShowcase = (source: string) => {
+        const filteredReviews = data?.CollectedReviews?.filter((review: any) => review.source === source);
+        setDisplayedReviews(filteredReviews);
+    };
+
+    // const filteredReviews = filteredSource
+    //     ? data?.CollectedReviews?.filter((review: any) => review.source === filteredSource)
+    //     : data?.CollectedReviews;
 
     return (
         <ThemeProvider theme={showCustomTheme ? mainTheme : defaultTheme}>
@@ -69,10 +86,25 @@ const ReviewPage: React.FC<ReviewPageProps> = ({data }) => {
                             <CollectedReviewShortSummary data={data} />
                             <CollectedReviewsSources data={data} />     
                         </Box>
+                        {/* Right Hand Column */}
                         <Grid xs={12} md={6}>
+                            <Stack direction="row" spacing={1} sx={{ mb: 2, flexWrap: 'wrap' }}>
+                                {[...new Set(data?.CollectedReviews?.map((review: any) => review.source))].map((source: string, index) => {
+                                    const count = data?.CollectedReviews?.filter((review: any) => review.source === source).length;
+                                    return (
+                                        <Chip 
+                                            key={index} 
+                                            label={<span><span style={{ fontWeight: 'normal' }}>{source}</span> {`(${count})`}</span>} 
+                                            onClick={() => filterReviewShowcase(source)} 
+                                            size="medium" 
+                                            sx={{ mb: 1 }}
+                                        />
+                                    );
+                                })}
+                            </Stack>
                             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, height: '100%', alignItems: 'center' }}>
-                                {data?.CollectedReviews?.map((review: any, index: number) => (
-                                    <CollectedReviewsAll  
+                                {displayedReviews?.map((review: any, index: number) => (
+                                    <IndividualReview  
                                         quote={review.quote} 
                                         source={review.source} 
                                         source_url={review.source_url} 

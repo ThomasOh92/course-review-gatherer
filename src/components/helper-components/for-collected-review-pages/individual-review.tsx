@@ -16,7 +16,7 @@ interface Quote {
 
 
 
-const CollectedReviewsAll: React.FC<Quote> = ({ quote, source, source_url, bolded_text, flagged_status, keywords, sentiment, date, key }) => {
+const IndividualReview: React.FC<Quote> = ({ quote, source, source_url, bolded_text, flagged_status, keywords, sentiment, date, key }) => {
     
     let formattedQuote: (string | JSX.Element)[] = [quote];
     const normalize = (str: string) => str.replace(/[.,/#!$%^&*;:{}=\-_`~()]/g, '').toLocaleLowerCase();
@@ -40,6 +40,12 @@ const CollectedReviewsAll: React.FC<Quote> = ({ quote, source, source_url, bolde
                 <StyledCard key={key}>
                     <StyledCardContent>
                         <Box>
+                            <Typography variant="h6" color="textSecondary" sx={{ mb: 1 }}>
+                                Review from {' '}
+                                <a href={source_url} target="_blank" rel="noopener noreferrer">
+                                    {source}
+                                </a>
+                            </Typography>
                             <Typography variant="subtitle2" color="textSecondary" sx={{ mb: 1 }}>
                                {formattedQuote}
                             </Typography>
@@ -47,15 +53,10 @@ const CollectedReviewsAll: React.FC<Quote> = ({ quote, source, source_url, bolde
                                 <strong>Sentiment:</strong> {sentiment}
                             </Typography>
                             {date && (
-                                <Typography variant="body2" color="textSecondary" sx={{ mb: 1 }}>
+                                <Typography variant="body2" color="textSecondary">
                                     <strong>Date:</strong> {date}
                                 </Typography>
                             )}
-                            <Typography variant="body2" color="textSecondary">
-                                <a href={source_url} target="_blank" rel="noopener noreferrer">
-                                    {source}
-                                </a>
-                            </Typography>
                         </Box>
                     </StyledCardContent>
                 </StyledCard>
@@ -63,4 +64,4 @@ const CollectedReviewsAll: React.FC<Quote> = ({ quote, source, source_url, bolde
     );
 };
 
-export default CollectedReviewsAll;
+export default IndividualReview;

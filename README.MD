@@ -1,6 +1,11 @@
-# Next Steps
-- Work on extracting quality reviews first - hand extracted is fine
-- Consider reworking individual pages - left hand column (Generated Insight). Consider adding Course Metadata 
+# Action List
+- Work on the Reddit API automation and pull in other Reddit reviews
+- Improve Quote Display - Readability is shit - Kill dark mode, make light mode more gentle
+- Social media blitz to drive visitors to website
+
+===================
+# Coding Work to improve site
+- Consider reworking individual pages - left hand column (Generated Insight). Consider adding Course Metadata, Positive vs Negative count. 
 - Maybe change "Review Source Data Notes" to the actual list of sources
 - Maybe further add - Sources have multiple fields (links, tag - trusted, high priority, experimental, name, description, type, added date, status)
 
