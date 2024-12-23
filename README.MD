@@ -1,7 +1,9 @@
 # Action List
-- Work on the Reddit API automation and pull in other Reddit reviews
-- Improve Quote Display - Readability is shit - Kill dark mode, make light mode more gentle
 - Social media blitz to drive visitors to website
+- Start new course
+- Reach out to FastAI creators to get this featured
+- Think about process definition and automation improvements
+- Improve Quote Display - Readability is shit - Kill dark mode, make light mode more gentle
 
 ===================
 # Coding Work to improve site
@@ -18,6 +20,10 @@
 
 
 ## Phase B - WIP - Manual quote extraction (copilot enhancments to move faster)? Webscraped with LLMs? Using specific APIs? (Reddit)
+### Note on Reddit API
+- API scrapes really clean data from Reddit, works really nicely
+- Getting that into database-ready format, with extract quotes, etc., that are actually useful - very hard right now with LLMs
+
 ### Possible Prompt for extracting specific quotes from raw data
 {insert link}
 This link contains valuable reviews about the course {course name}. I would like you to go to the page and extract quotes that provide a review about the course. Find as many relevant quotes as possible.
