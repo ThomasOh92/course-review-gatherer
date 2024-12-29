@@ -26,9 +26,11 @@
 
 ### Possible Prompt for extracting specific quotes from raw data
 {insert link}
-This link contains valuable reviews about the course {course name}. I would like you to go to the page and extract quotes that provide a review about the course. Find as many relevant quotes as possible.
-- Each quote should be
--- between 400-600 characters, with a minimum of 70 words
+This file contains data from Reddit, with a lot of reviews about the course CS50. 
+I would like you to extract word for word quotes that provide an opinion about the course, whether positive, negative or neutral. Each quote should be  between 400-600 characters, with a minimum of 70 words. Each quote should contain information that will help someone decide whether they should take a course. Present these quotes back to me in json format as well, with the associated date
+
+
+
 -- contain information that will help someone decide whether they should take a course
 -- Does not include newline characters (\n), tabs (\t), or other formatting artifacts.
 -- Excludes HTML tags, URLs, or unrelated text (e.g., navigation headers or site footers).

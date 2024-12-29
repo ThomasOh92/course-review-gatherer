@@ -22,12 +22,10 @@ export default function HomePage() {
   const blogTheme = createTheme(getBlogTheme(mode));
   const defaultTheme = createTheme({ palette: { mode } });
 
-  const [cs50Data, setCS50Data] = useState<any>(null);
-  const [googleAIEssentialsData, setGoogleAIEssentialsData] = useState<any>(null);
-  const [GenAINanoDegreeUdacityData, setGenAINanoDegreeUdacityData] = useState<any>(null);
+  const [cs50xData, setCS50xData] = useState<any>(null);
   const [fastAIData, setfastAIData] = useState<any>(null);
 
-  const comingSoonTitles = ['CS50', 'Google AI Essentials', 'Gen AI Nano Degree Udacity'];
+  const comingSoonTitles = ['Google AI Essentials', 'Gen AI Nano Degree Udacity'];
 
   
   // This code only runs on the client side, to determine the system color preference
@@ -50,9 +48,7 @@ export default function HomePage() {
     const fetchData = async () => {
       try {
       const docRefs = [
-        { ref: doc(db, "summarizedReviews", "CS50"), setter: setCS50Data },
-        { ref: doc(db, "summarizedReviews", "GoogleAIEssentials"), setter: setGoogleAIEssentialsData },
-        { ref: doc(db, "summarizedReviews", "GenAINanoDegreeUdacity"), setter: setGenAINanoDegreeUdacityData },
+        { ref: doc(db, "summarizedReviews", "CS50x"), setter: setCS50xData },
         { ref: doc(db, "summarizedReviews", "FastAI"), setter: setfastAIData },
       ];
 
@@ -97,6 +93,9 @@ export default function HomePage() {
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4, height: '100%', alignItems: 'center' }}>
                   <HomepageSummaryCard
                     data={fastAIData}
+                  />
+                  <HomepageSummaryCard
+                    data={cs50xData}
                   />
                   {comingSoonTitles.map((title, index) => (
                     <HomepageComingSoon key={index} title={title} />
