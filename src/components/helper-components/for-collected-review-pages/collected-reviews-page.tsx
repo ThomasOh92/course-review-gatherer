@@ -88,7 +88,7 @@ const ReviewPage: React.FC<ReviewPageProps> = ({data}) => {
                         </Box>
                         {/* Right Hand Column */}
                         <Grid xs={12} md={6}>
-                            <Stack direction="row" spacing={1} sx={{ mb: 2, flexWrap: 'wrap' }}>
+                            <Stack direction="row" spacing={1} sx={{ mb: 2, flexWrap: 'wrap', maxWidth: '800px', justifyContent: 'center', gap: 1 }}>
                                 {[...new Set(data?.CollectedReviews?.map((review: any) => review.source))].map((source: string, index) => {
                                     const count = data?.CollectedReviews?.filter((review: any) => review.source === source).length;
                                     return (
