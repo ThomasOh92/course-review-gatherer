@@ -84,7 +84,7 @@ const HomepageSummaryCard: React.FC<HomepageSummaryCardProps> = ({ data }) => {
                         sx={{ display: 'block', overflow: 'visible', WebkitLineClamp: 'unset', color: 'secondary.main', ml: 3 }}
                         href={data ? data.CollectedReviewHref : 'Loading...'}
                     >
-                        See Details on Collected Reviews
+                        Collected Reviews
                     </Link>
                 </Box>
             </StyledCardContent>

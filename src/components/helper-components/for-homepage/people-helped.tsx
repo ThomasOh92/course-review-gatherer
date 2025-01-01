@@ -32,6 +32,12 @@ const PeopleHelped = () => (
                         secondary="Requested a review of 'Fast AI: Practical Deep Learning for Coders' - Created on 15 Nov 2024"
                     />
                 </ListItem>
+                <ListItem>
+                    <ListItemText
+                        primary="G. Oliver"
+                        secondary="Requested a review of 'HarvardX: CS50's Introduction to Computer Science' - Created on 31 Dec 2024"
+                    />
+                </ListItem>
             </List>
         </Box>
     </Paper>

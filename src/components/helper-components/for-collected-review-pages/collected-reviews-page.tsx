@@ -78,7 +78,10 @@ const ReviewPage: React.FC<ReviewPageProps> = ({data}) => {
                                     '&:hover': {
                                         backgroundColor: 'primary.light',
                                         borderColor: 'primary.dark',
-                                    }
+                                    },
+                                    width: '100%',
+                                    textAlign: 'center',
+                                    fontWeight: 'bold',
                                 }}
                             >
                                 Go to Course
