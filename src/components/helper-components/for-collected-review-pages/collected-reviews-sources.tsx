@@ -2,6 +2,7 @@ import React from 'react';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import { StyledCardContent, StyledTypography } from '../custom-styled-mui-components';
+import Link from '@mui/material/Link';
 
 interface CollectedReviewsSourcesProps {
     data?: {
@@ -25,12 +26,19 @@ const CollectedReviewsSources: React.FC<CollectedReviewsSourcesProps> = ({ data 
                 {data ? data.ReviewSourceDataNotes : 'Loading...'}
             </StyledTypography>
             {data?.AllLinks && data.AllLinks.length > 0 ? (
-                <ul>
+                <ul style={{listStyle: 'disc', paddingLeft: '20px' }}>
                     {data.AllLinks.map((link, index) => (
-                        <li key={index}>
-                            <a href={link.url} target="_blank" rel="noopener noreferrer">
+                        <li key={index} style={{ marginBottom: 4 }}>
+                            <Link 
+                                href={link.url} 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                color="text.secondary" 
+                                underline="hover" 
+                                style={{ fontSize: '0.8rem' }}
+                            >
                                 {link.title}
-                            </a>
+                            </Link>
                         </li>
                     ))}
                 </ul>
