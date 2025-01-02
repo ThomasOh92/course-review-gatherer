@@ -5,6 +5,10 @@ import { StyledCardContent, StyledTypography } from '../custom-styled-mui-compon
 
 interface CollectedReviewsSourcesProps {
     data?: {
+        AllLinks?: {
+            title: string;
+            url: string;
+        }[];
         ReviewSourceDataNotes?: string;
     };
 }
@@ -20,6 +24,21 @@ const CollectedReviewsSources: React.FC<CollectedReviewsSourcesProps> = ({ data 
             >
                 {data ? data.ReviewSourceDataNotes : 'Loading...'}
             </StyledTypography>
+            {data?.AllLinks && data.AllLinks.length > 0 ? (
+                <ul>
+                    {data.AllLinks.map((link, index) => (
+                        <li key={index}>
+                            <a href={link.url} target="_blank" rel="noopener noreferrer">
+                                {link.title}
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+            ) : (
+                <Typography variant="body2" color="text.secondary">
+                    No links available.
+                </Typography>
+            )}
         </StyledCardContent>
     </Paper>
 );
