@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HomePage from './components/homepage';
 import FastAI from './components/FastAI';
 import CS50x from './components/CS50x';
-import AndrewNgDeepLearning from './components/andrewNgDeepLearning';
+import AndrewNgDeepLearning from './components/AndrewNgDeepLearning';
+
 
 const App: React.FC = () => {
   return (
