@@ -24,6 +24,7 @@ export default function HomePage() {
 
   const [cs50xData, setCS50xData] = useState<any>(null);
   const [fastAIData, setfastAIData] = useState<any>(null);
+  const [andrewNgDeepLearningData, setAndrewNgDeepLearningData] = useState<any>(null);
 
   const comingSoonTitles = ['Google AI Essentials', 'Gen AI Nano Degree Udacity'];
 
@@ -50,6 +51,7 @@ export default function HomePage() {
       const docRefs = [
         { ref: doc(db, "summarizedReviews", "CS50x"), setter: setCS50xData },
         { ref: doc(db, "summarizedReviews", "FastAI"), setter: setfastAIData },
+        { ref: doc(db, "summarizedReviews", "andrewNgDeepLearning"), setter: setAndrewNgDeepLearningData },
       ];
 
       const fetchDocs = docRefs.map(async ({ ref, setter }) => {
@@ -96,6 +98,9 @@ export default function HomePage() {
                   />
                   <HomepageSummaryCard
                     data={cs50xData}
+                  />
+                  <HomepageSummaryCard
+                    data={andrewNgDeepLearningData}
                   />
                   {comingSoonTitles.map((title, index) => (
                     <HomepageComingSoon key={index} title={title} />
