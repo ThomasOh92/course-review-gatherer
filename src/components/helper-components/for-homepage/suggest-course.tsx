@@ -24,7 +24,7 @@ const SuggestCourse = () => {
                     Suggest a Course
                 </Typography>
                 <Typography variant="body1" gutterBottom sx={{ maxWidth: 300 }}>
-                    Request for a course to be added! I will work on adding it to the list of summaries
+                    Request for a course to be added!
                 </Typography>
                 <Box
                     sx={{

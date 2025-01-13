@@ -12,7 +12,6 @@ import { db } from '../firebaseconfig';
 import Footer from './Footer';
 import getBlogTheme from './mui-theme/getTheme';
 import SuggestCourse from './helper-components/for-homepage/suggest-course';
-import PeopleHelped from './helper-components/for-homepage/people-helped';
 import HomepageSummaryCard from './helper-components/for-homepage/homepage-summary-card';
 import HomepageComingSoon from './helper-components/for-homepage/hompage-coming-soon';
 
@@ -81,14 +80,44 @@ export default function HomePage() {
           component="main"
           sx={{ display: 'flex', flexDirection: 'column', my: 6, gap: 4 }}
         >
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, alignItems: 'center' }}>
-            <Typography variant="h1" > Course Review Collector </Typography>
-            <Typography variant="subtitle1" gutterBottom >Deciding whether to start an online course? We collect and analyze reviews from unique sources</Typography>
+          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <Typography
+            variant="h1"
+            sx={{
+              display: 'flex',
+              flexDirection: { xs: 'column', sm: 'row' },
+              alignItems: 'center',
+              fontSize: 'clamp(3rem, 10vw, 3.5rem)',
+            }}
+            >
+              Course&nbsp;Review&nbsp;
+              <Typography
+                component="span"
+                variant="h1"
+                sx={(theme) => ({
+                  fontSize: 'inherit',
+                  color: 'primary.main',
+                  ...theme.applyStyles('dark', {
+                    color: 'primary.light',
+                  }),
+                })}
+              >
+                Collector
+              </Typography>
+            </Typography>
+
+            <Typography variant="subtitle1" > Manually verified reviews on your favourite courses</Typography>
+            <Typography variant="subtitle1" > Manually verified recommendations on ‘how-to’ get that certificate, learn that topic, acquire that skill</Typography>
+            <Typography variant="subtitle2" sx={{ mb: 4 }}>
+              Use the collected reviews or recommendations with LLMs to build out your study plan or decide whether to start that course
+            </Typography>
+
+
+
             <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 4, alignItems: { xs: 'center', md: 'flex-start' }, width: '100%' }}>
               {/* Left Hand Column */}
               <Box>
                 <SuggestCourse />
-                <PeopleHelped />
               </Box>
               {/* Right Hand Column */}
               <Grid xs={12} md={6}>
