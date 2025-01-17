@@ -105,11 +105,8 @@ export default function HomePage() {
                 Collector
               </Typography>
             </Typography>
-
-            <Typography variant="subtitle1" > Manually verified reviews on your favourite courses</Typography>
-            <Typography variant="subtitle1" > Manually verified recommendations on ‘how-to’ get that certificate, learn that topic, acquire that skill</Typography>
-            <Typography variant="subtitle2" sx={{ mb: 4 }}>
-              Use the collected reviews or recommendations with LLMs to build out your study plan or decide whether to start that course
+            <Typography variant="subtitle1" sx={{ mb: 4 }}>
+              Manually verified course reviews and study recommendations. Use them with LLMs to plan your learning path or decide whether to start a course.
             </Typography>
 
 
