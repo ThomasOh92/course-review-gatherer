@@ -105,9 +105,8 @@ export default function HomePage() {
                 Collector
               </Typography>
             </Typography>
-            <Typography variant="subtitle1" sx={{ mb: 4 }}>
-              Manually verified course reviews and study recommendations. Use them with LLMs to plan your learning path or decide whether to start a course.
-            </Typography>
+
+            <Typography variant="subtitle1" > Manually verified course reviews and study recommendations. Use them with LLMs to plan your learning path or decide whether to start a course</Typography>
 
 
 
