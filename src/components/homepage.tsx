@@ -106,10 +106,16 @@ export default function HomePage() {
               </Typography>
             </Typography>
 
-            <Typography variant="subtitle1" > Manually verified course reviews and study recommendations. Use them with LLMs to plan your learning path or decide whether to start a course</Typography>
-
-
-
+            <Typography
+              sx={{
+                textAlign: 'center',
+                color: 'text.secondary',
+                width: { sm: '100%', md: '80%' },
+              }}
+            >
+           Manually verified course reviews and study recommendations. Use them with LLMs to plan your learning path or decide whether to start a course.
+            </Typography>
+            
             <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 4, alignItems: { xs: 'center', md: 'flex-start' }, width: '100%' }}>
               {/* Left Hand Column */}
               <Box>
