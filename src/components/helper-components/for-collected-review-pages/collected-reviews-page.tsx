@@ -14,14 +14,18 @@ import IndividualReview from './individual-review';
 import Link from '@mui/material/Link';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
+import { doc, getDocs, collection } from 'firebase/firestore';
+import { db } from '../../../firebaseconfig';
 
 interface ReviewPageProps {
     data: any;
+    courseId: string;
 }
 
-const ReviewPage: React.FC<ReviewPageProps> = ({data}) => {
+const ReviewPage: React.FC<ReviewPageProps> = ({data, courseId}) => {
     const [mode, setMode] = React.useState<PaletteMode>('light');
     const [showCustomTheme, setShowCustomTheme] = React.useState(true);
+    const [reviews, setReviews] = React.useState<any[]>([]);
     const [displayedReviews, setDisplayedReviews] = React.useState<any | null>(null);
     const mainTheme = createTheme(getTheme(mode));
     const defaultTheme = createTheme({ palette: { mode } });
@@ -38,19 +42,30 @@ const ReviewPage: React.FC<ReviewPageProps> = ({data}) => {
 
 
     React.useEffect(() => {
-        if (data?.CollectedReviews) {
-            setDisplayedReviews(data.CollectedReviews);
-        }
-    }, [data]);
+        const fetchCollectedReviews = async () => {
+            try {
+              const subCollectionRef = collection(doc(db, "summarizedReviews", courseId), "CollectedReviews");
+              const snapshot = await getDocs(subCollectionRef);
+      
+              const reviewsData = snapshot.docs.map((doc) => ({
+                ...doc.data(),
+              }));
+              setReviews(reviewsData);
+              console.log(reviewsData);
+              setDisplayedReviews(reviewsData);
+            } catch (error) {
+              console.error("Error fetching subcollection data for reviews:", error);
+            } 
+          };
+      
+          fetchCollectedReviews();
+        }, [courseId]);
+
 
     const filterReviewShowcase = (source: string) => {
-        const filteredReviews = data?.CollectedReviews?.filter((review: any) => review.source === source);
+        const filteredReviews = reviews.filter((review: any) => review.source === source);
         setDisplayedReviews(filteredReviews);
     };
-
-    // const filteredReviews = filteredSource
-    //     ? data?.CollectedReviews?.filter((review: any) => review.source === filteredSource)
-    //     : data?.CollectedReviews;
 
     return (
         <ThemeProvider theme={showCustomTheme ? mainTheme : defaultTheme}>
@@ -92,8 +107,14 @@ const ReviewPage: React.FC<ReviewPageProps> = ({data}) => {
                         {/* Right Hand Column */}
                         <Grid xs={12} md={6}>
                             <Stack direction="row" spacing={1} sx={{ mb: 2, flexWrap: 'wrap', maxWidth: '800px', justifyContent: 'center', gap: 1 }}>
-                                {[...new Set(data?.CollectedReviews?.map((review: any) => review.source))].map((source: string, index) => {
-                                    const count = data?.CollectedReviews?.filter((review: any) => review.source === source).length;
+                                <Chip 
+                                    label="All Reviews" 
+                                    onClick={() => setDisplayedReviews(reviews)} 
+                                    size="medium" 
+                                    sx={{ mb: 1 }}
+                                />
+                                {[...new Set(reviews.map((review: any) => review.source))].map((source: string, index) => {
+                                    const count = reviews.filter((review: any) => review.source === source).length;
                                     return (
                                         <Chip 
                                             key={index} 

@@ -33,6 +33,6 @@ export default function CS50x() {
 
 
   return (
-    <CollectedReviewsPage data={CS50xdata} />
+    <CollectedReviewsPage data={CS50xdata} courseId="CS50x" />
 );
 }
