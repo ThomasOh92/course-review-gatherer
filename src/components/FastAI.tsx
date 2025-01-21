@@ -33,6 +33,6 @@ export default function FastAI() {
 
 
   return (
-    <CollectedReviewsPage data={fastAIData} />
+    <CollectedReviewsPage data={fastAIData} courseId='FastAI'/>
 );
 }

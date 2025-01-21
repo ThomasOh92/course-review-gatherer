@@ -33,6 +33,6 @@ export default function AndrewNgDeepLearning() {
 
 
   return (
-    <CollectedReviewsPage data={andrewNgDeepLearningdata} />
+    <CollectedReviewsPage data={andrewNgDeepLearningdata} courseId='andrewNgDeepLearning' />
 );
 }
