@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Typography} from '@mui/material';
-import { StyledCard, StyledCardContent, StyledTypography } from '../custom-styled-mui-components';
+import { Card, CardContent } from '@mui/material';
 
 interface Quote {
     quote: string;
@@ -37,8 +37,8 @@ const IndividualReview: React.FC<Quote> = ({ quote, source, source_url, bolded_t
     
     return (
         <>
-                <StyledCard key={key}>
-                    <StyledCardContent>
+                <Card key={key}>
+                    <CardContent>
                         <Box>
                             <Typography variant="h6" color="textSecondary" sx={{ mb: 1 }}>
                                 Review from {' '}
@@ -58,8 +58,8 @@ const IndividualReview: React.FC<Quote> = ({ quote, source, source_url, bolded_t
                                 </Typography>
                             )}
                         </Box>
-                    </StyledCardContent>
-                </StyledCard>
+                    </CardContent>
+                </Card>
         </>
     );
 };

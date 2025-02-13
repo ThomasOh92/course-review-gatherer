@@ -1,6 +1,6 @@
 import React from 'react';
 import { Typography } from '@mui/material';
-import { StyledCard, StyledCardContent, StyledTypography } from '../custom-styled-mui-components';
+import { Card, CardContent } from '@mui/material';
 
 interface HomepageComingSoonProps {
     title: string;
@@ -17,7 +17,7 @@ const HomepageComingSoon: React.FC<HomepageComingSoonProps> = ({ title }) => {
     };
 
     return (
-        <StyledCard
+        <Card
             variant="outlined"
             onFocus={() => handleFocus(0)}
             onBlur={handleBlur}
@@ -25,7 +25,7 @@ const HomepageComingSoon: React.FC<HomepageComingSoonProps> = ({ title }) => {
             className={focusedCardIndex === 0 ? 'Mui-focused' : ''}
             sx={{ height: '100%', width: '100%', maxWidth: 700 }}
         >
-            <StyledCardContent
+            <CardContent
                 sx={{
                     display: 'flex',
                     flexDirection: 'column',
@@ -37,17 +37,17 @@ const HomepageComingSoon: React.FC<HomepageComingSoonProps> = ({ title }) => {
                     <Typography variant="h6" component="div">
                         {title ? title : 'Loading...'}
                     </Typography>
-                    <StyledTypography
+                    <Typography
                         variant="body2"
                         color="text.secondary"
                         gutterBottom
                         sx={{ display: 'block', overflow: 'visible', WebkitLineClamp: 'unset', mt: 1, mb: 1 }}
                     >
                         Summary Coming Soon...
-                    </StyledTypography>
+                    </Typography>
                 </div>
-            </StyledCardContent>
-        </StyledCard>
+            </CardContent>
+        </Card>
     );
 };
 

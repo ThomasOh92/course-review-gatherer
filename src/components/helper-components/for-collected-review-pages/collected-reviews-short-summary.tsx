@@ -4,7 +4,7 @@ import Typography from '@mui/material/Typography';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-import { StyledCardContent, StyledTypography } from '../custom-styled-mui-components';
+import CardContent from '@mui/material/CardContent';
 
 interface CollectedReviewShortSummaryProps {
     data?: {
@@ -16,7 +16,7 @@ interface CollectedReviewShortSummaryProps {
 const CollectedReviewShortSummary: React.FC<CollectedReviewShortSummaryProps> = ({ data }) => {
     return (
         <Paper tabIndex={0} sx={{ height: '100%', maxWidth: 500 }}>
-            <StyledCardContent>
+            <CardContent>
                 <div>
                     <Typography variant="h6" component="div">Summary</Typography>
                     <List sx={{ padding: 0, margin: 0, mb: 2 }} >
@@ -26,15 +26,15 @@ const CollectedReviewShortSummary: React.FC<CollectedReviewShortSummaryProps> = 
                             </ListItem>
                         ))}
                     </List>
-                    <StyledTypography
+                    <Typography
                         variant="body2"
                         color="text.secondary"
                         gutterBottom
                     >
                         {data ? data.ShortSummary : 'Loading...'}
-                    </StyledTypography>
+                    </Typography>
                 </div>
-            </StyledCardContent>
+            </CardContent>
         </Paper>
     );
 };

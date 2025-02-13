@@ -1,7 +1,7 @@
 import React from 'react';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-import { StyledCardContent, StyledTypography } from '../custom-styled-mui-components';
+import CardContent from '@mui/material/CardContent';
 import Link from '@mui/material/Link';
 
 interface CollectedReviewsSourcesProps {
@@ -16,15 +16,15 @@ interface CollectedReviewsSourcesProps {
 
 const CollectedReviewsSources: React.FC<CollectedReviewsSourcesProps> = ({ data }) => (
     <Paper tabIndex={0} sx={{ height: '100%', maxWidth: 500 }}>
-        <StyledCardContent>
+        <CardContent>
             <Typography variant="h6" component="div">Review Sources</Typography>
-            <StyledTypography
+            <Typography
                 variant="body2"
                 color="text.secondary"
                 gutterBottom
             >
                 {data ? data.ReviewSourceDataNotes : 'Loading...'}
-            </StyledTypography>
+            </Typography>
             {data?.AllLinks && data.AllLinks.length > 0 ? (
                 <ul style={{listStyle: 'disc', paddingLeft: '20px' }}>
                     {data.AllLinks.map((link, index) => (
@@ -47,7 +47,7 @@ const CollectedReviewsSources: React.FC<CollectedReviewsSourcesProps> = ({ data 
                     No links available.
                 </Typography>
             )}
-        </StyledCardContent>
+        </CardContent>
     </Paper>
 );
 

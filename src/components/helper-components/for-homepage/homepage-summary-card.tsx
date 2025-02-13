@@ -1,6 +1,5 @@
 import React from 'react';
-import { Card, Typography, List, ListItem, ListItemText, Box, Link } from '@mui/material';
-import { StyledCard, StyledCardContent, StyledTypography } from '../custom-styled-mui-components';
+import { Card, CardContent, Typography, List, ListItem, ListItemText, Box, Link } from '@mui/material';
 
 interface Data {
     CollectedReviewHref: string | undefined;
@@ -18,9 +17,6 @@ interface HomepageSummaryCardProps {
 
 
 const HomepageSummaryCard: React.FC<HomepageSummaryCardProps> = ({ data }) => {
-    if (data) {
-        data = data.data();
-    }
 
     const [focusedCardIndex, setFocusedCardIndex] = React.useState<number | null>(null,);
     const handleFocus = (index: number) => {
@@ -31,7 +27,7 @@ const HomepageSummaryCard: React.FC<HomepageSummaryCardProps> = ({ data }) => {
     };
 
     return (
-        <StyledCard
+        <Card
             variant="outlined"
             onFocus={() => handleFocus(3)}
             onBlur={handleBlur}
@@ -39,7 +35,7 @@ const HomepageSummaryCard: React.FC<HomepageSummaryCardProps> = ({ data }) => {
             className={focusedCardIndex === 3 ? 'Mui-focused' : ''}
             sx={{ height: '100%', maxWidth: 700 }}
         >
-            <StyledCardContent
+            <CardContent
                 sx={{
                     display: 'flex',
                     flexDirection: 'column',
@@ -48,47 +44,60 @@ const HomepageSummaryCard: React.FC<HomepageSummaryCardProps> = ({ data }) => {
                 }}
             >
                 <div>
-                    <Typography variant="h6" component="div">
-                        {data ? data.Title : 'Loading...'}
+                    <Typography variant="body1">
+                        {data ? data.ReviewSourceDataNotes : 'Loading...'}
                     </Typography>
-                    <List sx={{ padding: 0, margin: 0 }}>
-                        {data?.BulletPoints?.map((point: string, index: number) => (
-                            <ListItem key={index} sx={{ padding: 0, margin: 0 }}>
-                                <ListItemText primary={`• ${point}`} />
-                            </ListItem>
-                        ))}
-                    </List>
-                    <StyledTypography
+                    <Typography
                         variant="body2"
                         color="text.secondary"
                         gutterBottom
                         sx={{ display: 'block', overflow: 'visible', WebkitLineClamp: 'unset', mt: 1, mb: 1 }}
                     >
-                        {data ? data.ShortSummary : 'Loading...'}
-                    </StyledTypography>
-                    <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
-                        <Card sx={{ maxWidth: 500, textAlign: 'center' }}>
-                            Analysed from... {data ? data.ReviewSourceDataNotes : 'Loading...'}
-                        </Card>
-                    </Box>
+                        <strong>AI Summary:</strong> {data ? data.ShortSummary : 'Loading...'}
+                    </Typography>
                 </div>
                 <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
                     <Link
-                        sx={{ display: 'block', overflow: 'visible', WebkitLineClamp: 'unset', color: 'primary.main' }}
+                        sx={{ 
+                            display: 'block', 
+                            overflow: 'visible', 
+                            WebkitLineClamp: 'unset', 
+                            color: 'primary.main', 
+                            fontFamily: 'Roboto, sans-serif',
+                            fontWeight: 'bold',
+                            fontSize: '0.875rem', // Smaller font size
+                            textDecoration: 'none', // Remove underline
+                            '&:hover': {
+                                textDecoration: 'underline', // Add underline on hover
+                            }
+                        }}
                         href={data ? data.CourseLink : 'Loading...'}
                         target='_blank'
                     >
                         Link to Course
                     </Link>
                     <Link
-                        sx={{ display: 'block', overflow: 'visible', WebkitLineClamp: 'unset', color: 'secondary.main', ml: 3 }}
+                        sx={{ 
+                            display: 'block', 
+                            overflow: 'visible', 
+                            WebkitLineClamp: 'unset', 
+                            color: 'secondary.main', 
+                            ml: 3, 
+                            fontFamily: 'Roboto, sans-serif',
+                            fontWeight: 'bold',
+                            fontSize: '0.875rem', // Smaller font size
+                            textDecoration: 'none', // Remove underline
+                            '&:hover': {
+                                textDecoration: 'underline', // Add underline on hover
+                            }
+                        }}
                         href={data ? data.CollectedReviewHref : 'Loading...'}
                     >
                         Collected Reviews
                     </Link>
                 </Box>
-            </StyledCardContent>
-        </StyledCard>
+            </CardContent>
+        </Card>
     );
 };
 

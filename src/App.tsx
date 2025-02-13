@@ -4,11 +4,13 @@ import HomePage from './components/homepage';
 import FastAI from './components/FastAI';
 import CS50x from './components/CS50x';
 import AndrewNgDeepLearning from './components/AndrewNgDeepLearning';
+import { GlobalStyles } from '@mui/material';
 
 
 const App: React.FC = () => {
   return (
     <Router>
+      <GlobalStyles styles={{ body: { backgroundColor: '#f0f0f0' } }} />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/fastAI" element={<FastAI />} />
