@@ -3,7 +3,7 @@ import { Container, TextField, IconButton, Paper, Typography, Box } from "@mui/m
 import SendIcon from "@mui/icons-material/Send";
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../../firebaseconfig';
-
+import { getFunctions, httpsCallable } from "firebase/functions";
 
 interface SubmitQuestionProps {
   selectedCourseData: Data | null;
@@ -59,18 +59,14 @@ const SubmitQuestion: React.FC<SubmitQuestionProps> = ({selectedCourseData}) => 
   };
 
   const getOpenAIResponse = async (prompt: any, formattedReviews: any) => {
+    const functions = getFunctions();
+    const getOpenAIResponseCallable = httpsCallable(functions, "getOpenAIResponse");
     try {
-      const response = await fetch("https://getopenairesponse-r4whflv5oa-uc.a.run.app", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt, reviews: formattedReviews }),
-        mode: "cors"
-      });
-  
-      const data = await response.json();
-      return data.message;
+      const response: any = await getOpenAIResponseCallable({ prompt, formattedReviews })
+      return response.data.message;
+
     } catch (error) {
-      console.error("Error fetching OpenAI response:", error);
+      console.error(error);
     }
   };
     
