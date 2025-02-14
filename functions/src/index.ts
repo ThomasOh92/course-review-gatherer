@@ -10,14 +10,21 @@ exports.getOpenAIResponse = onCall({ cors: true , secrets: [openaiKey] }, async 
   try {
     const openai = new OpenAI({ apiKey: await openaiKey.value() });
 
-    const { prompt, reviews } = request.data;
-    const systemMessage = "You are an AI assistant that answers user questions about online courses strictly based on the provided reviews. Use only the provided quotes and sources to generate your response.";
+    const { prompt, formattedReviews } = request.data;
+
+    const systemMessage = `
+      You are an AI assistant that answers user questions about online courses strictly based on the provided reviews. 
+      Use only the provided quotes and sources to generate your response.
+      - Format the response in clear **bullet points**.
+      - Include the **source URL** for each quote, making it clickable.
+      - If multiple reviews express the same opinion, summarize them concisely.
+    `;
 
     const completion = await openai.chat.completions.create({
       model: "gpt-4o-mini",
       messages: [
         { role: "system", content: systemMessage },
-        { role: "user", content: `Here are the course reviews:\n\n${reviews}` },
+        { role: "user", content: `Here are the course reviews:\n\n${formattedReviews}` },
         { role: "user", content: `Question: ${prompt}` }
       ],
     });
