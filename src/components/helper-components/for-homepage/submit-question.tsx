@@ -35,6 +35,7 @@ const SubmitQuestion: React.FC<SubmitQuestionProps> = ({selectedCourseData}) => 
       querySnapshot.forEach((doc) => {
         const data = doc.data();
         reviews.push({
+          ReviewId: data.ReviewID || "Unknown Review ID",
           source_url: data.source_url || "Unknown URL",
           source: data.source || "Unknown Source",
           quote: data.quote || "No quote available"
@@ -44,7 +45,6 @@ const SubmitQuestion: React.FC<SubmitQuestionProps> = ({selectedCourseData}) => 
       if (reviews.length === 0) {
         return "No reviews found for this course.";
       }
-
       return reviews;
     } catch (error) {
       console.error("Error fetching reviews:", error);
@@ -53,8 +53,8 @@ const SubmitQuestion: React.FC<SubmitQuestionProps> = ({selectedCourseData}) => 
   }
 
   const formatReviewsForOpenAI = (reviews: any[]) => {
-    return reviews.map((review, index) => 
-      `Review ${index + 1}:\nSource: ${review.source}\nURL: ${review.source_url}\nQuote: "${review.quote}"\n`
+    return reviews.map((review) => 
+      `Review ID: ${review.ReviewId}:\nSource: ${review.source}\nURL: ${review.source_url}\nQuote: "${review.quote}"\n`
     ).join("\n\n");
   };
 
@@ -90,8 +90,6 @@ const SubmitQuestion: React.FC<SubmitQuestionProps> = ({selectedCourseData}) => 
       console.error("Error handling question:", error);
     }
   }
-
-
 
   return (
     <Container sx={{ display: "flex", flexDirection: "column", height: "60vh", pt: 2, width: '100%'}}>

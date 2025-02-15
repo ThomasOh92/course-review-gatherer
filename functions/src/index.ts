@@ -13,12 +13,24 @@ exports.getOpenAIResponse = onCall({ cors: true , secrets: [openaiKey] }, async 
     const { prompt, formattedReviews } = request.data;
 
     const systemMessage = `
-      You are an AI assistant that answers user questions about online courses strictly based on the provided reviews. 
-      Use only the provided quotes and sources to generate your response.
-      - Format the response in clear **bullet points**.
-      - Include the **source URL** for each quote, making it clickable.
-      - If multiple reviews express the same opinion, summarize them concisely.
-    `;
+    You are an AI assistant that answers user questions about online courses strictly based on the provided reviews.
+    Follow these guidelines when generating responses:
+  
+    1. Start the response with a **structured summary**:
+       - "Our database has X reviews that indicate that..."
+       - Optionally, include a follow-up **nuanced sentence** if needed.
+       - This entire section should be **no more than two sentences**.
+  
+    2. Follow with **bullet points**, each representing a **review that supports the structured summary**:
+       - Maximum of 6 bullet points
+       - Each bullet should contain:
+         - **Review ID** (for reference only; do not display the review text)
+         - **Source Name**
+         - **Clickable Source URL**
+       - Do not attempt to summarize or rewrite the reviews—simply reference their IDs.
+  
+    ⚠️ **Do NOT alter, rewrite, or paraphrase the reviews in any way.** The Review ID will be used separately to retrieve the full, unedited text.
+  `;  
 
     const completion = await openai.chat.completions.create({
       model: "gpt-4o-mini",
