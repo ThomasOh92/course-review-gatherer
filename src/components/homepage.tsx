@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext, createContext } from 'react';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -14,6 +14,7 @@ export default function HomePage() {
   const [fastAIData, setFastAIData] = useState<any>(null);
   const [andrewNgDeepLearningData, setAndrewNgDeepLearningData] = useState<any>(null);
   const [selectedCourse, setSelectedCourse] = useState<string>("");
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -92,7 +93,8 @@ export default function HomePage() {
         {selectedCourseData && <HomepageSummaryCard data={selectedCourseData} />}
 
         {/* Question Interface */}
-        <SubmitQuestion selectedCourseData={selectedCourseData} />
+        <SubmitQuestion selectedCourseData={selectedCourseData}/>
+
       </Box>
     </Container>
   );

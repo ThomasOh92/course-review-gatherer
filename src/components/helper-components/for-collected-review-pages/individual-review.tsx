@@ -49,9 +49,6 @@ const IndividualReview: React.FC<Quote> = ({ quote, source, source_url, bolded_t
                             <Typography variant="subtitle2" color="textSecondary" sx={{ mb: 1 }}>
                                {formattedQuote}
                             </Typography>
-                            <Typography variant="body2" color="textSecondary" sx={{ mb: 1 }}>
-                                <strong>Sentiment:</strong> {sentiment}
-                            </Typography>
                             {date && (
                                 <Typography variant="body2" color="textSecondary">
                                     <strong>Date:</strong> {date}
