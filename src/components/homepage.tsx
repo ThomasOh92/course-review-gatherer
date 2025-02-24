@@ -78,7 +78,7 @@ export default function HomePage() {
       </Box>
 
       {/* Main Content */}
-      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, alignItems: 'center', width: '60%' }}>
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, alignItems: 'center', width: '100%', maxWidth: '600px'}}>
         {/* Drop Down List of Courses */}
         <FormControl fullWidth sx={{ backgroundColor: 'white' }}>
           <InputLabel>Select a Course</InputLabel>
